@@ -1,0 +1,25 @@
+{
+  "name": "weeby-js",
+  "version": "1.0.0",
+  "description": "JavaScript Wrapper for Weeby API.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ntm-development/weeby-js.git"
+  },
+  "keywords": [
+    "api",
+    "rest-api",
+    "weeby-api",
+    "wrapper"
+  ],
+  "author": "NTM Nathan#0001 @ NTM Development",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ntm-development/weeby-js/issues"
+  },
+  "homepage": "https://github.com/ntm-development/weeby-js#readme"
+}
