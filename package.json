@@ -4,22 +4,38 @@
   "description": "JavaScript Wrapper for Weeby API.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node index.js",
+    "test": "eslint --ignore-path .eslintignore .",
+    "lint": "eslint --fix --ignore-path .eslintignore .",
+    "docs": "jsdoc -c .jsdoc.json"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ntm-development/weeby-js.git"
   },
+  "author": "NTM Nathan#0001 @ NTM Development",
+  "license": "AGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/ntm-development/weeby-js/issues"
+  },
+  "homepage": "https://github.com/ntm-development/weeby-js#readme",
+  "devDependencies": {
+    "discord.js": "^12.2.0",
+    "docdash": "^1.2.0",
+    "dotenv": "^8.2.0",
+    "eslint": "^7.24.0",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.1.0",
+    "jsdoc": "^3.6.6"
+  },
+  "dependencies": {
+    "node-superfetch": "^0.2.2"
+  },
   "keywords": [
     "api",
     "rest-api",
     "weeby-api",
+    "weebyapi",
     "wrapper"
-  ],
-  "author": "NTM Nathan#0001 @ NTM Development",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/ntm-development/weeby-js/issues"
-  },
-  "homepage": "https://github.com/ntm-development/weeby-js#readme"
+  ]
 }
