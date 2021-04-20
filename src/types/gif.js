@@ -14,7 +14,7 @@ class GIF {
 
   /**
     * Returns a random GIF image of the type provided.
-    * @param {string} type - The Type of GIF.
+    * @param {string} type - The Type of GIF. See https://weebyapi.xyz/api/docs#section3 for all the GIFs.
     * @returns {Promise<buffer>} The Formatted GIF URL
     */
   async fetch(type) {

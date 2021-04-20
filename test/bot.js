@@ -16,7 +16,6 @@ client.on("message", async message => {
   const args = message.content.substring(prefix.length).trim().split(" ");
   const cmd = args.shift().toLowerCase();
 
-  // One Image Endpoint
   if (cmd === "oneimage") {
     const image = await weeby.generators.oneImage({ type: "3000years", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
 
@@ -65,6 +64,16 @@ client.on("message", async message => {
 
     const embed = new MessageEmbed()
       .setImage(image);
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "overlay") {
+    const image = await weeby.overlays.fetch({ type: "thuglife", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
+
+    const embed = new MessageEmbed()
+      .attachFiles({ attachment: image, name: "overlay.png" })
+      .setImage("attachment://overlay.png");
 
     message.channel.send(embed);
   }
