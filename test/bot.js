@@ -1,4 +1,3 @@
-// Install Discord.js Master Version : npm install discordjs/discord.js
 const { Client, MessageEmbed } = require("discord.js");
 require("dotenv").config();
 
