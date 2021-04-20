@@ -1,5 +1,4 @@
 /* To Do:
-* Demotivational
 * RIP
 * Tweet
 * Spotify Search
@@ -140,6 +139,33 @@ class Generators {
       } else {
         throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The generator you tried to request was not found. Make sure it is spelt correctly.")}`);
       }
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Prints two texts on a requested image generator. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} image - The link to an image (.png, .jpg, .gif)
+    * @param {string} title - The title text to print.
+    * @param {string} text - The text to print.
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async demotivational({ image: image, title: title, text: text }) {
+    try {
+      if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+      if (typeof title !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Title parameter is not a string.")}`);
+      if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+      if (!image) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+      if (!title) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Title parameter is missing. You will need to provide some text.")}`);
+      if (!text) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+
+      const { body } = await get(`${this.baseURL}/demotivational`)
+        .set("Authorization", `Bearer ${this.token}`)
+        .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+        .query({ image: image, title: title, text: text });
+
+      return body;
     } catch (e) {
       throw new Error(e);
     }

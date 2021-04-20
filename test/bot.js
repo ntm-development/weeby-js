@@ -20,6 +20,8 @@ client.on("message", async message => {
     const image = await weeby.generators.oneImage({ type: "3000years", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
 
     const embed = new MessageEmbed()
+      .setTitle(`**One Image**`)
+      .setColor(`#E881D1`)
       .attachFiles({ attachment: image, name: "oneImage.png" })
       .setImage("attachment://oneImage.png");
 
@@ -30,6 +32,8 @@ client.on("message", async message => {
     const image = await weeby.generators.twoImages({ type: "whowouldwin", firstImage: message.author.displayAvatarURL({ format: "png", size: 1024 }), secondImage: "https://i.imgur.com/ZgrxPgU.png" });
 
     const embed = new MessageEmbed()
+      .setTitle(`**Two Images**`)
+      .setColor(`#E881D1`)
       .attachFiles({ attachment: image, name: "twoImages.png" })
       .setImage("attachment://twoImages.png");
 
@@ -43,6 +47,8 @@ client.on("message", async message => {
     const image = await weeby.generators.text({ type: "hollywoodstar", text: text });
 
     const embed = new MessageEmbed()
+      .setTitle(`**Text**`)
+      .setColor(`#E881D1`)
       .attachFiles({ attachment: image, name: "text.png" })
       .setImage("attachment://text.png");
 
@@ -53,8 +59,22 @@ client.on("message", async message => {
     const image = await weeby.generators.twoText({ type: "tuxedopooh", textOne: "Hello there, my friend", textTwo: "Goodbye, my friend" });
 
     const embed = new MessageEmbed()
+      .setTitle(`**Two Text**`)
+      .setColor(`#E881D1`)
       .attachFiles({ attachment: image, name: "twoText.png" })
       .setImage("attachment://twoText.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "demotivational") {
+    const image = await weeby.generators.demotivational({ image: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), title: "Hello", text: "Testing 123 hah!" });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Demotivational**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "demotivational.png" })
+      .setImage("attachment://demotivational.png");
 
     message.channel.send(embed);
   }
@@ -63,6 +83,8 @@ client.on("message", async message => {
     const image = await weeby.gif.fetch("hug");
 
     const embed = new MessageEmbed()
+      .setTitle(`**GIF**`)
+      .setColor(`#E881D1`)
       .setImage(image);
 
     message.channel.send(embed);
@@ -72,6 +94,8 @@ client.on("message", async message => {
     const image = await weeby.overlays.fetch({ type: "thuglife", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
 
     const embed = new MessageEmbed()
+      .setTitle(`**Overlay**`)
+      .setColor(`#E881D1`)
       .attachFiles({ attachment: image, name: "overlay.png" })
       .setImage("attachment://overlay.png");
 
