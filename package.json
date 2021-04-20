@@ -29,6 +29,7 @@
     "jsdoc": "^3.6.6"
   },
   "dependencies": {
+    "chalk": "^4.1.0",
     "node-superfetch": "^0.2.2"
   },
   "keywords": [

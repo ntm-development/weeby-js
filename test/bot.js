@@ -17,12 +17,35 @@ client.on("message", async message => {
   const cmd = args.shift().toLowerCase();
 
   // One Image Endpoint
-  if (cmd === "3000years") {
-    const image = await weeby.generators.oneImage("3000years", message.author.displayAvatarURL({ format: "png", dynamic: true, size: 1024 }));
+  if (cmd === "oneimage") {
+    const image = await weeby.generators.oneImage({ type: "3000years", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
 
     const embed = new MessageEmbed()
-      .attachFiles({ attachment: image, name: "3000years.png" })
-      .setImage("attachment://3000years.png");
+      .attachFiles({ attachment: image, name: "oneImage.png" })
+      .setImage("attachment://oneImage.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "twoimages") {
+    const image = await weeby.generators.twoImages({ type: "whowouldwin", firstImage: message.author.displayAvatarURL({ format: "png", size: 1024 }), secondImage: "https://i.imgur.com/ZgrxPgU.png" });
+
+    const embed = new MessageEmbed()
+      .attachFiles({ attachment: image, name: "oneImage.png" })
+      .setImage("attachment://oneImage.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "text") {
+    const text = args.join(" ");
+    if (!text) return message.channel.send("You will need to provide some text!");
+
+    const image = await weeby.generators.text({ type: "hollywoodstar", text: text });
+
+    const embed = new MessageEmbed()
+      .attachFiles({ attachment: image, name: "oneImage.png" })
+      .setImage("attachment://oneImage.png");
 
     message.channel.send(embed);
   }
