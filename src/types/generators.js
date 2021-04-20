@@ -1,3 +1,11 @@
+/* To Do:
+* Demotivational
+* RIP
+* Tweet
+* Spotify Search
+* Spotify Now Playing
+* Color
+*/
 const { get } = require("node-superfetch");
 const chalk = require("chalk");
 const { version } = require("../../package.json");
@@ -96,6 +104,37 @@ class Generators {
           .set("Authorization", `Bearer ${this.token}`)
           .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
           .query({ text });
+
+        return body;
+      } else {
+        throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The generator you tried to request was not found. Make sure it is spelt correctly.")}`);
+      }
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Prints two texts on a requested image generator. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} type - The Type of Generator.
+    * @param {string} textOne - The first text to print.
+    * @param {string} textTwo - The second text to print.
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async twoText({ type: type, textOne: textOne, textTwo: textTwo }) {
+    try {
+      if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+      if (typeof textOne !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Text parameter is not a string.")}`);
+      if (typeof textTwo !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Text parameter is not a string.")}`);
+      if (!type) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
+      if (!textOne) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Text parameter is missing. You will need to provide some text.")}`);
+      if (!textTwo) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Text parameter is missing. You will need to provide some text.")}`);
+
+      if (twoTexts.includes(type)) {
+        const { body } = await get(`${this.baseURL}/${type}`)
+          .set("Authorization", `Bearer ${this.token}`)
+          .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+          .query({ textone: textOne, texttwo: textTwo });
 
         return body;
       } else {

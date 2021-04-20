@@ -31,8 +31,8 @@ client.on("message", async message => {
     const image = await weeby.generators.twoImages({ type: "whowouldwin", firstImage: message.author.displayAvatarURL({ format: "png", size: 1024 }), secondImage: "https://i.imgur.com/ZgrxPgU.png" });
 
     const embed = new MessageEmbed()
-      .attachFiles({ attachment: image, name: "oneImage.png" })
-      .setImage("attachment://oneImage.png");
+      .attachFiles({ attachment: image, name: "twoImages.png" })
+      .setImage("attachment://twoImages.png");
 
     message.channel.send(embed);
   }
@@ -44,8 +44,27 @@ client.on("message", async message => {
     const image = await weeby.generators.text({ type: "hollywoodstar", text: text });
 
     const embed = new MessageEmbed()
-      .attachFiles({ attachment: image, name: "oneImage.png" })
-      .setImage("attachment://oneImage.png");
+      .attachFiles({ attachment: image, name: "text.png" })
+      .setImage("attachment://text.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "twotext") {
+    const image = await weeby.generators.twoText({ type: "tuxedopooh", textOne: "Hello there, my friend", textTwo: "Goodbye, my friend" });
+
+    const embed = new MessageEmbed()
+      .attachFiles({ attachment: image, name: "twoText.png" })
+      .setImage("attachment://twoText.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "gif") {
+    const image = await weeby.gif.fetch("hug");
+
+    const embed = new MessageEmbed()
+      .setImage(image);
 
     message.channel.send(embed);
   }
