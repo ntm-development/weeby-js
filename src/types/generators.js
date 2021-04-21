@@ -1,9 +1,8 @@
 /* To Do:
-* RIP
 * Tweet
+* Tweet Fetch
 * Spotify Search
 * Spotify Now Playing
-* Color
 */
 const { get } = require("node-superfetch");
 const chalk = require("chalk");
@@ -251,6 +250,27 @@ class Generators {
         .set("Authorization", `Bearer ${this.token}`)
         .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
         .query({ avatar: avatar, username: username, message: message });
+
+      return body;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Returns the colour in a Image (Buffer) format. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} hex - The hex color (Do not include the hashtag).
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async color(hex) {
+    try {
+      if (typeof hex !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The hex parameter is not a string.")}`);
+      if (!hex) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Hex parameter is missing. You will need to provide the type of generator.")}`);
+
+      const { body } = await get(`${this.baseURL}/color`)
+        .set("Authorization", `Bearer ${this.token}`)
+        .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+        .query({ hex });
 
       return body;
     } catch (e) {

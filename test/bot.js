@@ -137,6 +137,18 @@ client.on("message", async message => {
 
     message.channel.send(embed);
   }
+
+  if (cmd === "color") {
+    const image = await weeby.generators.color("76d6ff");
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Color**`)
+      .setColor(`#76d6ff`)
+      .attachFiles({ attachment: image, name: "color.png" })
+      .setImage("attachment://color.png");
+
+    message.channel.send(embed);
+  }
 });
 
 client.login(process.env.TOKEN);
