@@ -79,6 +79,18 @@ client.on("message", async message => {
     message.channel.send(embed);
   }
 
+  if (cmd === "friendship") {
+    const image = await weeby.generators.friendship({ firstImage: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), secondImage: "https://i.imgur.com/ZgrxPgU.png", firstText: message.author.username, secondText: "Nate???" });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Friendship**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "friendship.png" })
+      .setImage("attachment://friendship.png");
+
+    message.channel.send(embed);
+  }
+
   if (cmd === "demotivational") {
     const image = await weeby.generators.demotivational({ image: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), title: "Hello", text: "Testing 123 hah!" });
 

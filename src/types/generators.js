@@ -175,6 +175,36 @@ class Generators {
   }
 
   /**
+    * Prints two images and texts on a friendship banner. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} firstImage - The link to the first image (.png, .jpg, .gif)
+    * @param {string} secondImage - The link to the second image (.png, .jpg, .gif)
+    * @param {string} firstText - The first text to print.
+    * @param {string} secondText - The second text to print.
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async friendship({ firstImage: firstImage, secondImage: secondImage, firstText: firstText, secondText: secondText }) {
+    try {
+      if (typeof firstImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Image parameter is not a string.")}`);
+      if (typeof secondImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Image parameter is not a string.")}`);
+      if (typeof firstText !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Text parameter is not a string.")}`);
+      if (typeof secondText !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Text parameter is not a string.")}`);
+      if (!firstImage) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Image parameter is missing. You will need to provide a valid image link.")}`);
+      if (!secondImage) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Image parameter is missing. You will need to provide a valid image link.")}`);
+      if (!firstText) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Text parameter is missing. You will need to provide some text.")}`);
+      if (!secondText) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Text parameter is missing. You will need to provide some text.")}`);
+
+      const { body } = await get(`${this.baseURL}/friendship`)
+        .set("Authorization", `Bearer ${this.token}`)
+        .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+        .query({ firstimage: firstImage, secondimage: secondImage, firsttext: firstText, secondtext: secondText });
+
+      return body;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
     * Draws an image, title and text on a demotivational poster. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
     * @param {string} image - The link to an image (.png, .jpg, .gif)
     * @param {string} title - The title text to print.
