@@ -15,7 +15,7 @@ class GIF {
   /**
     * Returns a random GIF image of the type provided.
     * @param {string} type - The Type of GIF. See https://weebyapi.xyz/api/docs#section3 for all the GIFs.
-    * @returns {Promise<buffer>} The Formatted GIF URL
+    * @returns {Promise<string>} The Formatted GIF URL.
     */
   async fetch(type) {
     if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);

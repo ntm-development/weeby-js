@@ -149,6 +149,28 @@ client.on("message", async message => {
 
     message.channel.send(embed);
   }
+
+  if (cmd === "word") {
+    const res = await weeby.json.word("random");
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Word**`)
+      .setColor(`#E881D1`)
+      .setDescription(res);
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "response") {
+    const res = await weeby.json.response("dadjoke");
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Response**`)
+      .setColor(`#E881D1`)
+      .setDescription(res);
+
+    message.channel.send(embed);
+  }
 });
 
 client.login(process.env.TOKEN);

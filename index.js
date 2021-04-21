@@ -2,8 +2,9 @@ const chalk = require("chalk");
 const Generators = require("./src/types/generators");
 const GIF = require("./src/types/gif");
 const Overlays = require("./src/types/overlays");
-/* const Effects = require("./src/types/effects");
 const JSON = require("./src/types/json");
+
+/* const Effects = require("./src/types/effects");
 const Custom = require("./src/types/custom"); */
 const { version } = require("./package.json");
 
@@ -24,6 +25,7 @@ class WeebyAPI {
     this.generators = new Generators(token, `${this.baseURL}/generators/`);
     this.gif = new GIF(token, `${this.baseURL}/gif/`);
     this.overlays = new Overlays(token, `${this.baseURL}/overlays/`);
+    this.json = new JSON(token, `${this.baseURL}/json/`);
   }
 
 }
