@@ -67,14 +67,38 @@ client.on("message", async message => {
     message.channel.send(embed);
   }
 
+  if (cmd === "textimage") {
+    const image = await weeby.generators.textImage({ type: "lisapresentation", image: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), text: "Goodbye, my friend" });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Text Image**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "textImage.png" })
+      .setImage("attachment://textImage.png");
+
+    message.channel.send(embed);
+  }
+
   if (cmd === "demotivational") {
     const image = await weeby.generators.demotivational({ image: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), title: "Hello", text: "Testing 123 hah!" });
 
     const embed = new MessageEmbed()
       .setTitle(`**Demotivational**`)
-      .setColor(`#E881D1`)
+      .setColor(`#347cdb`)
       .attachFiles({ attachment: image, name: "demotivational.png" })
       .setImage("attachment://demotivational.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "rip") {
+    const image = await weeby.generators.rip({ avatar: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), username: "Hello", message: "Testing 123 hah!" });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**RIP**`)
+      .setColor(`#6b6d75`)
+      .attachFiles({ attachment: image, name: "rip.png" })
+      .setImage("attachment://rip.png");
 
     message.channel.send(embed);
   }

@@ -12,6 +12,7 @@ const oneImage = require("../assets/generators/oneImage.json");
 const twoImages = require("../assets/generators/twoImages.json");
 const texts = require("../assets/generators/text.json");
 const twoTexts = require("../assets/generators/twoText.json");
+const textImage = require("../assets/generators/textImage.json");
 
 /**
 * @class Generators
@@ -145,7 +146,36 @@ class Generators {
   }
 
   /**
-    * Prints two texts on a requested image generator. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * Draws an image and text on a requested generator. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} type - The type of Generator
+    * @param {string} image - The link to an image (.png, .jpg, .gif)
+    * @param {string} text - The text to print.
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async textImage({ type: type, image: image, text: text }) {
+    try {
+      if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+      if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+      if (!image) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+      if (!text) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+
+      if (textImage.includes(type)) {
+        const { body } = await get(`${this.baseURL}/${type}`)
+          .set("Authorization", `Bearer ${this.token}`)
+          .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+          .query({ image: image, text: text });
+
+        return body;
+      } else {
+        throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The generator you tried to request was not found. Make sure it is spelt correctly.")}`);
+      }
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Draws an image, title and text on a demotivational poster. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
     * @param {string} image - The link to an image (.png, .jpg, .gif)
     * @param {string} title - The title text to print.
     * @param {string} text - The text to print.
@@ -164,6 +194,33 @@ class Generators {
         .set("Authorization", `Bearer ${this.token}`)
         .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
         .query({ image: image, title: title, text: text });
+
+      return body;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Draws a image, username and message on a Gravestone. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} avatar - The link to an image (.png, .jpg, .gif)
+    * @param {string} username - The username to print.
+    * @param {string} message - The text to print.
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async rip({ avatar: avatar, username: username, message: message }) {
+    try {
+      if (typeof avatar !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Avatar parameter is not a string.")}`);
+      if (typeof username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
+      if (typeof message !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Message parameter is not a string.")}`);
+      if (!avatar) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Avatar parameter is missing. You will need to provide a valid image link.")}`);
+      if (!username) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
+      if (!message) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Message parameter is missing. You will need to provide some text.")}`);
+
+      const { body } = await get(`${this.baseURL}/rip`)
+        .set("Authorization", `Bearer ${this.token}`)
+        .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+        .query({ avatar: avatar, username: username, message: message });
 
       return body;
     } catch (e) {
