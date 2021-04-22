@@ -1,4 +1,4 @@
-<img src="https://i.imgur.com/KLJ5ePZ.png" width="auto" height="200">
+<a href="https://weebyapi.xyz/"><img src="https://i.imgur.com/KLJ5ePZ.png" width="auto" height="200"></a>
 
 # Weeby-JS
 Official JavaScript API Wrapper for [Weeby API](https://weebyapi.xyz/).
@@ -18,7 +18,9 @@ npm install weeby-js --save
 ```
 
 ## 🗝 Authentication
-`weeby-js` requires an authorization token which will have to be obtained on the [NTM Discord Server](https://weebyapi.xyz/discord) by messaging the Weeby API Bot. Please read more about this on the [Weeby API Website](https://weebyapi.xyz/). It is very important to **not** show this token to anybody.
+`weeby-js` requires an authorization token which will have to be obtained on the [NTM Discord Server](https://weebyapi.xyz/discord) by messaging the Weeby API Bot. Please read more about this on the [Weeby API Website](https://weebyapi.xyz/). 
+
+> Upon being accepted into Weeby API. It is very important to **never** show this token to anybody.
 
 ## 🏳 Examples
 ### GIF:
