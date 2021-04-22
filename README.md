@@ -129,3 +129,6 @@ Thanks for checking out `weeby-js`, a NPM module development and maintained by N
 I am currently maintaining this during my spare time, so if you would like to support me, Feel free to do so by donating [here](https://buymeacoffee.com/ntmnathan) on Buy me a coffee.
 
 Also, don't forget to star the repo! 😋
+
+## ⚖️ License
+The `GNU General Public License v3.0` applies to this repository. Please see the `LICENSE` file to learn more.
