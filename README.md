@@ -122,7 +122,7 @@ await weeby.json.intensity({ type: String, intensity: Number, image: String<url>
 await weeby.json.level({ type: String, level: Number, image: String<url> });
 
 //Resize
-await weeby.json.level({ width: Number, height: Number, image: String<url> });
+await weeby.json.resize({ width: Number, height: Number, image: String<url> });
 ```
 
 ### Overlays ([View](https://weebyapi.xyz/api/docs#section6))
