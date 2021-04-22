@@ -7,6 +7,7 @@ const JSON = require("./src/types/json");
 /* const Effects = require("./src/types/effects");
 const Custom = require("./src/types/custom"); */
 const { version } = require("./package.json");
+const Custom = require("./src/types/custom");
 
 /**
 * @class Client
@@ -26,6 +27,7 @@ class WeebyAPI {
     this.gif = new GIF(token, `${this.baseURL}/gif/`);
     this.overlays = new Overlays(token, `${this.baseURL}/overlays/`);
     this.json = new JSON(token, `${this.baseURL}/json/`);
+    this.custom = new Custom(token, `${this.baseURL}/custom/`);
   }
 
 }

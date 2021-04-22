@@ -163,6 +163,18 @@ client.on("message", async message => {
     message.channel.send(embed);
   }
 
+  if (cmd === "color") {
+    const image = await weeby.generators.color("76d6ff");
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Color**`)
+      .setColor(`#76d6ff`)
+      .attachFiles({ attachment: image, name: "color.png" })
+      .setImage("attachment://color.png");
+
+    message.channel.send(embed);
+  }
+
   if (cmd === "gif") {
     const image = await weeby.gif.fetch("hug");
 
@@ -186,18 +198,6 @@ client.on("message", async message => {
     message.channel.send(embed);
   }
 
-  if (cmd === "color") {
-    const image = await weeby.generators.color("76d6ff");
-
-    const embed = new MessageEmbed()
-      .setTitle(`**Color**`)
-      .setColor(`#76d6ff`)
-      .attachFiles({ attachment: image, name: "color.png" })
-      .setImage("attachment://color.png");
-
-    message.channel.send(embed);
-  }
-
   if (cmd === "word") {
     const res = await weeby.json.word("random");
 
@@ -216,6 +216,30 @@ client.on("message", async message => {
       .setTitle(`**Response**`)
       .setColor(`#E881D1`)
       .setDescription(res);
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "welcome") {
+    const image = await weeby.custom.greeting({ icon: "https://i.imgur.com/ZgrxPgU.png", background: "https://i.imgur.com/K5QxYa2.png", greet: "Welcome", name: "Nate" });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Welcome**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "welcome.png" })
+      .setImage("attachment://welcome.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "rank") {
+    const image = await weeby.custom.rank({ avatar: "https://i.imgur.com/ZgrxPgU.png", username: "Nate", bgColor: "ffffff", level: 5, xp: 7 });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**${message.author.username}'s Rank**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "rank.png" })
+      .setImage("attachment://rank.png");
 
     message.channel.send(embed);
   }
