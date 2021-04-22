@@ -1,15 +1,14 @@
+/* eslint-disable no-inline-comments */
 const { Client, MessageEmbed } = require("discord.js");
+const WeebyAPI = require("../index"); // Change this to: require("weeby-js");
+const weeby = new WeebyAPI(process.env.WEEBYAPI);
 require("dotenv").config();
 
 const client = new Client({
   disableEveryone: true
 });
 
-/* eslint-disable no-inline-comments */
-const WeebyAPI = require("../index"); // Change this to: require("weeby-js");
-const weeby = new WeebyAPI(process.env.WEEBYAPI);
-
-client.on("ready", () => console.log("Test Bot is now online"));
+client.on("ready", () => console.log("Weeby-JS test bot is now online!"));
 
 client.on("message", async message => {
   const prefix = "w+";
