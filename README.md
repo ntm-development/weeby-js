@@ -112,7 +112,17 @@ await weeby.json.response(String<type>);
 
 ### Effects ([View](https://weebyapi.xyz/api/docs#section5))
 ```js
+//General
+await weeby.json.general({ type: String, image: String<url> });
 
+//Intensity
+await weeby.json.intensity({ type: String, intensity: Number, image: String<url> });
+
+//Level
+await weeby.json.level({ type: String, level: Number, image: String<url> });
+
+//Resize
+await weeby.json.level({ width: Number, height: Number, image: String<url> });
 ```
 
 ### Overlays ([View](https://weebyapi.xyz/api/docs#section6))

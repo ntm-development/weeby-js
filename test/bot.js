@@ -243,7 +243,7 @@ client.on("message", async message => {
     message.channel.send(embed);
   }
 
-  if (cmd === "generaleffect") {
+  if (cmd === "effect") {
     const image = await weeby.effects.general({ type: "invert", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
 
     const embed = new MessageEmbed()
