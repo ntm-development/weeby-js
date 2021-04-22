@@ -3,11 +3,9 @@ const Generators = require("./src/types/generators");
 const GIF = require("./src/types/gif");
 const Overlays = require("./src/types/overlays");
 const JSON = require("./src/types/json");
-
-/* const Effects = require("./src/types/effects");
-const Custom = require("./src/types/custom"); */
-const { version } = require("./package.json");
 const Custom = require("./src/types/custom");
+const Effects = require("./src/types/effects");
+const { version } = require("./package.json");
 
 /**
 * @class Client
@@ -26,6 +24,7 @@ class WeebyAPI {
     this.generators = new Generators(token, `${this.baseURL}/generators/`);
     this.gif = new GIF(token, `${this.baseURL}/gif/`);
     this.overlays = new Overlays(token, `${this.baseURL}/overlays/`);
+    this.effects = new Effects(token, `${this.baseURL}/effects/`);
     this.json = new JSON(token, `${this.baseURL}/json/`);
     this.custom = new Custom(token, `${this.baseURL}/custom/`);
   }

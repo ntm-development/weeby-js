@@ -1,0 +1,15 @@
+[
+    "blur",
+    "contrast",
+    "edge",
+    "greyscale",
+    "invert",
+    "pixelize",
+    "sepia",
+    "sharpen",
+    "silhouette",
+    "threshold",
+    "blurple",
+    "invertedthreshold",
+    "invertedgreyscale"
+]

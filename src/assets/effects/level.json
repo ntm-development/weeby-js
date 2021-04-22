@@ -1,0 +1,12 @@
+[
+    {
+        "type": "fisheye",
+        "min": 1,
+        "max": 100
+    },
+    {
+        "type": "desaturate",
+        "min": 1,
+        "max": 255
+    }
+]

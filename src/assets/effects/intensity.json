@@ -1,0 +1,17 @@
+[
+    {
+        "type": "brightness",
+        "min": 0,
+        "max": 255
+    },
+    {
+        "type": "darkness",
+        "min": 0,
+        "max": 255
+    },
+    {
+        "type": "distort",
+        "min": 0,
+        "max": 100
+    }
+]

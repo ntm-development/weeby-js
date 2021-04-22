@@ -3,6 +3,9 @@ const chalk = require("chalk");
 const { version } = require("../../package.json");
 const gifs = require("../assets/gif.json");
 
+/**
+* @class GIF
+*/
 class GIF {
 
   constructor(token, baseURL) {

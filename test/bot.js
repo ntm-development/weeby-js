@@ -1,8 +1,8 @@
 /* eslint-disable no-inline-comments */
 const { Client, MessageEmbed } = require("discord.js");
+require("dotenv").config();
 const WeebyAPI = require("../index"); // Change this to: require("weeby-js");
 const weeby = new WeebyAPI(process.env.WEEBYAPI);
-require("dotenv").config();
 
 const client = new Client({
   disableEveryone: true
@@ -239,6 +239,54 @@ client.on("message", async message => {
       .setColor(`#E881D1`)
       .attachFiles({ attachment: image, name: "rank.png" })
       .setImage("attachment://rank.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "generaleffect") {
+    const image = await weeby.effects.general({ type: "invert", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**General Effect**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "generalEffect.png" })
+      .setImage("attachment://generalEffect.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "intensity") {
+    const image = await weeby.effects.intensity({ type: "darkness", intensity: 30, image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Intensity Effect**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "intensity.png" })
+      .setImage("attachment://intensity.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "level") {
+    const image = await weeby.effects.level({ type: "fisheye", level: 50, image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Level Effect**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "level.png" })
+      .setImage("attachment://level.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "resize") {
+    const image = await weeby.effects.resize({ width: 400, height: 870, image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Resize**`)
+      .setColor(`#E881D1`)
+      .attachFiles({ attachment: image, name: "resize.png" })
+      .setImage("attachment://resize.png");
 
     message.channel.send(embed);
   }

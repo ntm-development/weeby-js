@@ -2,6 +2,9 @@ const { get } = require("node-superfetch");
 const chalk = require("chalk");
 const { version } = require("../../package.json");
 
+/**
+* @class Custom
+*/
 class Custom {
 
   constructor(token, baseURL) {

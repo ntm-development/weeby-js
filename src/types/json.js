@@ -4,6 +4,9 @@ const { version } = require("../../package.json");
 const word = require("../assets/json/word.json");
 const responses = require("../assets/json/response.json");
 
+/**
+* @class JSON
+*/
 class JSON {
 
   constructor(token, baseURL) {

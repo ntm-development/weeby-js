@@ -3,6 +3,9 @@ const chalk = require("chalk");
 const { version } = require("../../package.json");
 const overlay = require("../assets/overlays.json");
 
+/**
+* @class Overlays
+*/
 class Overlays {
 
   constructor(token, baseURL) {
