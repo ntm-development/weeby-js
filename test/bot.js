@@ -115,6 +115,54 @@ client.on("message", async message => {
     message.channel.send(embed);
   }
 
+  if (cmd === "tweet") {
+    const image = await weeby.generators.tweet({ avatar: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), username: message.author.username, tweet: "Hello my slimes!" });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Tweet**`)
+      .setColor(`#76d6ff`)
+      .attachFiles({ attachment: image, name: "tweet.png" })
+      .setImage("attachment://tweet.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "tweetfetch") {
+    const image = await weeby.generators.tweetFetch({ username: message.author.username, tweet: "Hello my slimes!" });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Tweet Fetch**`)
+      .setColor(`#76d6ff`)
+      .attachFiles({ attachment: image, name: "tweetFetch.png" })
+      .setImage("attachment://tweetFetch.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "spotifysearch") {
+    const image = await weeby.generators.spotifySearch({ type: "album", query: "Thriller" });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Spotify Search**`)
+      .setColor(`#1db954`)
+      .attachFiles({ attachment: image, name: "spotifySearch.png" })
+      .setImage("attachment://spotifySearch.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "spotifynp") {
+    const image = await weeby.generators.spotifyNp({ image: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), songName: "Love Hurts, jkjk", artist: "Nwateee", userPicks: `${message.author.username}'s Picks` });
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Spotify Now Playing**`)
+      .setColor(`#1db954`)
+      .attachFiles({ attachment: image, name: "spotifyNp.png" })
+      .setImage("attachment://spotifyNp.png");
+
+    message.channel.send(embed);
+  }
+
   if (cmd === "gif") {
     const image = await weeby.gif.fetch("hug");
 

@@ -1,9 +1,3 @@
-/* To Do:
-* Tweet
-* Tweet Fetch
-* Spotify Search
-* Spotify Now Playing
-*/
 const { get } = require("node-superfetch");
 const chalk = require("chalk");
 const { version } = require("../../package.json");
@@ -12,6 +6,7 @@ const twoImages = require("../assets/generators/twoImages.json");
 const texts = require("../assets/generators/text.json");
 const twoTexts = require("../assets/generators/twoText.json");
 const textImage = require("../assets/generators/textImage.json");
+const spotifySearching = require("../assets/generators/spotify.json");
 
 /**
 * @class Generators
@@ -250,6 +245,115 @@ class Generators {
         .set("Authorization", `Bearer ${this.token}`)
         .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
         .query({ avatar: avatar, username: username, message: message });
+
+      return body;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Generates a raw twitter tweet with username, tweet text and avatar. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} username - The username to print.
+    * @param {string} tweet - The text to print.
+    * @param {string} avatar - The link to an image (.png, .jpg, .gif)
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async tweet({ username: username, tweet: tweet, avatar: avatar }) {
+    try {
+      if (typeof username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
+      if (typeof tweet !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Tweet parameter is not a string.")}`);
+      if (typeof avatar !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Avatar parameter is not a string.")}`);
+      if (!username) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
+      if (!tweet) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Tweet parameter is missing. You will need to provide some text.")}`);
+      if (!avatar) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Avatar parameter is missing. You will need to provide a valid image link.")}`);
+
+      const { body } = await get(`${this.baseURL}/tweet`)
+        .set("Authorization", `Bearer ${this.token}`)
+        .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+        .query({ username: username, tweet: tweet, avatar: avatar });
+
+      return body;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Generates a twitter tweet with username (fetched from the Twitter API) and the tweet text. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} username - The username to print.
+    * @param {string} tweet - The text to print.
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async tweetFetch({ username: username, tweet: tweet }) {
+    try {
+      if (typeof username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
+      if (typeof tweet !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Tweet parameter is not a string.")}`);
+      if (!username) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
+      if (!tweet) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Tweet parameter is missing. You will need to provide some text.")}`);
+
+      const { body } = await get(`${this.baseURL}/tweetfetch`)
+        .set("Authorization", `Bearer ${this.token}`)
+        .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+        .query({ username: username, tweet: tweet });
+
+      return body;
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Generates a Spotify Banner of statistics and information from either music, playlists or users. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} type - The type of Spotify Search. (album, artist, playlist, track or user)
+    * @param {string} query - The value to search up. (Use %20 for spaces)
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async spotifySearch({ type: type, query: query }) {
+    try {
+      if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+      if (typeof query !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Query parameter is not a string.")}`);
+      if (!type) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
+      if (!query) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Query parameter is missing. You will need to provide some text.")}`);
+
+      if (spotifySearching.includes(type)) {
+        const { body } = await get(`${this.baseURL}/spotify/${type}`)
+          .set("Authorization", `Bearer ${this.token}`)
+          .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+          .query({ type: type, query: query });
+
+        return body;
+      } else {
+        throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The generator you tried to request was not found. Make sure it is spelt correctly.")}`);
+      }
+    } catch (e) {
+      throw new Error(e);
+    }
+  }
+
+  /**
+    * Generates a Fake Spotify Now Playing Image. Please see https://weebyapi.xyz/api/docs#section1 for the available generators.
+    * @param {string} image - The link to an image (.png, .jpg, .gif)
+    * @param {string} songName - The name of the song to print.
+    * @param {string} artist - The artist name to print.
+    * @param {string} userPicks - The user's picks name to print.
+    * @returns {Promise<buffer>} The generated image in a buffer.
+    */
+  async spotifyNp({ image: image, songName: songName, artist: artist, userPicks: userPicks }) {
+    try {
+      if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+      if (typeof songName !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Song Name parameter is not a string.")}`);
+      if (typeof artist !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Artist parameter is not a string.")}`);
+      if (typeof userPicks !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The User Picks parameter is not a string.")}`);
+      if (!image) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide some text.")}`);
+      if (!songName) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Song Name parameter is missing. You will need to provide some text.")}`);
+      if (!artist) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Artist parameter is missing. You will need to provide some text.")}`);
+      if (!userPicks) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("User Picks parameter is missing. You will need to provide some text.")}`);
+
+      const { body } = await get(`${this.baseURL}/spotifynp`)
+        .set("Authorization", `Bearer ${this.token}`)
+        .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+        .query({ image: image, songname: songName, artist: artist, userpicks: userPicks });
 
       return body;
     } catch (e) {

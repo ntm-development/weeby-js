@@ -1,2 +1,10 @@
 node_modules
 .env
+shrinkwrap.yaml
+.bash_history
+.cache
+.config
+.data
+.git
+.vscode
+package-lock.json
