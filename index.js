@@ -9,7 +9,7 @@ const { version } = require("./package.json");
 
 /**
 * @class Client
-* @classdesc weeby-js - The official JavaScript wrapper for Weeby API. https://weebyapi.xyz/
+* @classdesc weeby-js - The official JavaScript wrapper for Weeby API, developed by NTM Development. Website: https://weebyapi.xyz/
 */
 class WeebyAPI {
 
