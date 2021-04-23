@@ -1,7 +1,7 @@
 {
   "name": "weeby-js",
-  "version": "1.0.0",
-  "description": "JavaScript Wrapper for Weeby API.",
+  "version": "1.0.1",
+  "description": "JavaScript Wrapper for Weeby API. Developed by NTM Development",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",

@@ -18,7 +18,7 @@ npm install weeby-js --save
 ```
 
 ## 🗝 Authentication
-`weeby-js` requires an authorization token which can be obtained by joining the [NTM Discord Server](https://weebyapi.xyz/discord), and then the Weeby API Bot with the `w!apply` command. To learn more in deep about the application process, please visit the [Weeby API Website](https://weebyapi.xyz/). 
+`weeby-js` requires an authorization token which can be obtained by joining the [NTM Discord Server](https://weebyapi.xyz/discord), and then messaging the Weeby API Bot with the `w!apply` command. To learn more in deep about the application process, please visit the [Weeby API Website](https://weebyapi.xyz/). 
 
 > Upon being accepted into Weeby API. It is very important to **never** show this token to anybody.
 
@@ -72,7 +72,7 @@ await weeby.generators.friendship({ firstImage: String<url>, secondImage: String
 await weeby.generators.demotivational({ image: String<url>, title: String, text: String });
 
 //RIP
-await weeby.generators.demotivational({ avatar: String<url>, username: String, message: String });
+await weeby.generators.rip({ avatar: String<url>, username: String, message: String });
 
 //Tweet
 await weeby.generators.tweet({ avatar: String<url>, username: String, tweet: String });
