@@ -9,7 +9,7 @@ Official JavaScript API Wrapper for [Weeby API](https://weebyapi.xyz/).
 - Super simple and easy to use
 - Built in documentation
 - Includes all methods from Weeby API
-- Object oriented
+- Object-Oriented
 - Beginner friendly
 
 ## 💾 Installation
@@ -18,7 +18,7 @@ npm install weeby-js --save
 ```
 
 ## 🗝 Authentication
-`weeby-js` requires an authorization token which will have to be obtained on the [NTM Discord Server](https://weebyapi.xyz/discord) by messaging the Weeby API Bot. Please read more about this on the [Weeby API Website](https://weebyapi.xyz/). 
+`weeby-js` requires an authorization token which can be obtained by joining the [NTM Discord Server](https://weebyapi.xyz/discord), and then the Weeby API Bot with the `w!apply` command. To learn more in deep about the application process, please visit the [Weeby API Website](https://weebyapi.xyz/). 
 
 > Upon being accepted into Weeby API. It is very important to **never** show this token to anybody.
 
