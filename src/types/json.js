@@ -56,6 +56,35 @@ class JSON {
     }
   }
 
+  /**
+    * Fetches lyrics from the Genius API.
+    * @param {string} query - The lyrics to search. See https://weebyapi.xyz/api/docs#section4 for all the JSON endpoints.
+    * @returns {Promise<Object>} The lyrics and its informtation in a object.
+    */
+  async lyrics(query) {
+    if (typeof query !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Query parameter is not a string.")}`);
+    if (!query) throw new TypeError(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Query parameter is missing. You will need to provide some text.")}`);
+
+    const { body } = await get(`${this.baseURL}/lyrics`)
+      .set("Authorization", `Bearer ${this.token}`)
+      .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+      .query({ query });
+
+    return body;
+  }
+
+  /**
+    * Fetches Weeby API's current statistics.
+    * @returns {Promise<Object>} The statistics returned in a object.
+    */
+  async stats() {
+    const { body } = await get(`${this.baseURL}/stats`)
+      .set("Authorization", `Bearer ${this.token}`)
+      .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
+
+    return body;
+  }
+
 }
 
 module.exports = JSON;

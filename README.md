@@ -41,6 +41,16 @@ let image = await weeby.generators.oneImage({ type: "3000years", image: "https:/
 message.channel.send({files: [{ attachment: image }]}); // -> Image Buffer
 ```
 
+### Lyrics:
+```js
+const WeebyAPI = require("weeby-js");
+const weeby = new WeebyAPI("YOUR_TOKEN");
+
+let lyrics = await weeby.generators.lyrics("Thriller");
+message.channel.send(lyrics.track.name); // -> Object
+```
+
+
 More Examples can be found in `/test/bot.js`.
 
 ## ⌨️ Functions
@@ -77,7 +87,7 @@ await weeby.generators.rip({ avatar: String<url>, username: String, message: Str
 //Tweet
 await weeby.generators.tweet({ avatar: String<url>, username: String, tweet: String });
 
-//Tweet Fetch
+//Tweet Fetch (using Twitter API)
 await weeby.generators.tweetFetch({ username: String, tweet: String });
 
 //Spotify Search
@@ -86,7 +96,7 @@ await weeby.generators.spotifySearch({ type: String, query: String });
 //Spotify Now Playing
 await weeby.generators.spotifyNp({ image: String<url>, songName: String, artist: String, userPicks: String });
 
-//Spotify Now Playing
+//Color
 await weeby.generators.color(String<hex>);
 ```
 ### Custom ([View](https://weebyapi.xyz/api/docs#section2))
@@ -108,6 +118,12 @@ await weeby.json.word(String<type>);
 
 //Response
 await weeby.json.response(String<type>);
+
+//Lyrics
+await weeby.json.lyrics(String<query>);
+
+//Weeby API Statistics
+await weeby.json.stats();
 ```
 
 ### Effects ([View](https://weebyapi.xyz/api/docs#section5))
@@ -121,7 +137,7 @@ await weeby.json.intensity({ type: String, intensity: Number, image: String<url>
 //Level
 await weeby.json.level({ type: String, level: Number, image: String<url> });
 
-//Resize
+//Resize Image
 await weeby.json.resize({ width: Number, height: Number, image: String<url> });
 ```
 

@@ -1,4 +1,5 @@
 /* eslint-disable no-inline-comments */
+const { stripIndents } = require("common-tags");
 const { Client, MessageEmbed } = require("discord.js");
 require("dotenv").config();
 const WeebyAPI = require("../index"); // Change this to: require("weeby-js");
@@ -287,6 +288,79 @@ client.on("message", async message => {
       .setColor(`#E881D1`)
       .attachFiles({ attachment: image, name: "resize.png" })
       .setImage("attachment://resize.png");
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "lyrics") {
+    const lyrics = await weeby.json.lyrics("Thriller");
+
+    console.log(lyrics.lyrics); // Due to the character limit on Discord Embeds. The lyrics will be logged to the console to show that it was fetched successfully.
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Lyrics**`)
+      .setColor(`#E881D1`)
+      .setThumbnail(lyrics.track.thumbnail)
+      .setDescription(stripIndents`
+      `)
+      .addFields([
+        {
+          name: "**🎵 Track**",
+          value: lyrics.track.name,
+          inline: true
+        },
+        {
+          name: "**👨‍🎤 Artist**",
+          value: lyrics.artist.name,
+          inline: true
+        },
+        {
+          name: "\u200B",
+          value: "\u200B",
+          inline: true
+        }
+      ]);
+
+    message.channel.send(embed);
+  }
+
+  if (cmd === "stats") {
+    const res = await weeby.json.stats();
+
+    const embed = new MessageEmbed()
+      .setTitle(`**Weeby API Statistics**`)
+      .setColor(`#e6aded`)
+      .addFields(
+        {
+          name: "**Requests**",
+          value: stripIndents`
+            Generators **» \`${res.category.generators}\`**
+            GIF **» \`${res.category.gif}\`**
+            Custom **» \`${res.category.custom}\`**
+            JSON **» \`${res.category.json}\`**
+            Effects **» \`${res.category.effects}\`**
+            Overlays **» \`${res.category.overlays}\`**    
+            `,
+          inline: true
+        },
+        {
+          name: "**Usage**",
+          value: stripIndents`
+            Memory **» \`${res.usage.memory}mb\`**
+            CPU **» \`${res.usage.cpu}%\`**
+            Node CPU **» \`${res.usage.nodeCPU}%\`**        
+            `,
+          inline: true
+        },
+        {
+          name: "**Misc.**",
+          value: stripIndents`
+            Registered Users **» \`${res.registeredUsers}\`**
+            Lifetime Requests **» \`${res.lifetimeRequests}\`**
+          `,
+          inline: true
+        }
+      );
 
     message.channel.send(embed);
   }

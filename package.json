@@ -23,8 +23,9 @@
   "bugs": {
     "url": "https://github.com/ntm-development/weeby-js/issues"
   },
-  "homepage": "https://js.weebyapi.xyz/",
+  "homepage": "https://weebyapi.xyz/",
   "devDependencies": {
+    "common-tags": "^1.8.0",
     "discord.js": "^12.2.0",
     "docdash": "^1.2.0",
     "dotenv": "^8.2.0",
