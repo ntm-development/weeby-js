@@ -17,7 +17,7 @@ client.on("message", async message => {
   const cmd = args.shift().toLowerCase();
 
   if (cmd === "oneimage") {
-    const image = await weeby.generators.oneImage({ type: "3000years", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
+    const image = await weeby.generators.oneImage({ type: "wynaut", image: message.author.displayAvatarURL({ format: "png", size: 1024 }) });
 
     const embed = new MessageEmbed()
       .setTitle(`**One Image**`)
@@ -176,7 +176,7 @@ client.on("message", async message => {
   }
 
   if (cmd === "gif") {
-    const image = await weeby.gif.fetch("hug");
+    const image = await weeby.gif.fetch("wink");
 
     const embed = new MessageEmbed()
       .setTitle(`**GIF**`)
