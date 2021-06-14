@@ -1,6 +1,6 @@
 {
   "name": "weeby-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "JavaScript Wrapper for Weeby API. Developed by NTM Development",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   "bugs": {
     "url": "https://github.com/ntm-development/weeby-js/issues"
   },
-  "homepage": "https://weebyapi.xyz/",
+  "homepage": "https://js.weebyapi.xyz/",
   "devDependencies": {
     "common-tags": "^1.8.0",
     "discord.js": "^12.2.0",
