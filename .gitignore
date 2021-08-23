@@ -8,3 +8,5 @@ shrinkwrap.yaml
 .git
 .vscode
 package-lock.json
+cmds.md
+/markdown
