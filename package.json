@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "docs:dev": "vuepress dev site --temp .temp",
-    "docs:build": "vuepress build site",
+    "docs:build": "vuepress build docs",
     "test": "eslint --ignore-path .eslintignore .",
     "lint": "eslint --fix --ignore-path .eslintignore ."
   },
