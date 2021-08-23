@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "docs:dev": "vuepress dev site --temp .temp",
+    "docs:dev": "vuepress dev docs --temp .temp",
     "docs:build": "vuepress build docs",
     "test": "eslint --ignore-path .eslintignore .",
     "lint": "eslint --fix --ignore-path .eslintignore ."
@@ -25,6 +25,7 @@
   },
   "homepage": "https://js.weebyapi.xyz/",
   "devDependencies": {
+    "anywhere": "^1.5.0",
     "common-tags": "^1.8.0",
     "discord.js": "^12.5.3",
     "dotenv": "^8.6.0",

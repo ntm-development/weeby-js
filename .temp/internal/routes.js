@@ -9,11 +9,11 @@ import GlobalLayout from "D:\\Documents\\Programming\\NTMDevelopment\\weeby-js\\
 injectComponentOption(GlobalLayout, 'mixins', rootMixins)
 export const routes = [
   {
-    name: "v-944d44ac",
+    name: "v-52347a36",
     path: "/",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-944d44ac").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-52347a36").then(next)
     },
   },
   {
@@ -21,131 +21,131 @@ export const routes = [
     redirect: "/"
   },
   {
-    name: "v-7bbc5849",
-    path: "/docs/class/effects.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-7bbc5849").then(next)
-    },
-  },
-  {
-    name: "v-153f8ecb",
-    path: "/docs/class/custom.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-153f8ecb").then(next)
-    },
-  },
-  {
-    name: "v-1d0831ab",
-    path: "/docs/class/json.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-1d0831ab").then(next)
-    },
-  },
-  {
-    name: "v-41a8ecea",
-    path: "/docs/class/overlays.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-41a8ecea").then(next)
-    },
-  },
-  {
-    name: "v-073bfd08",
-    path: "/docs/functions.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-073bfd08").then(next)
-    },
-  },
-  {
-    name: "v-3aa8d776",
-    path: "/docs/class/gif.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-3aa8d776").then(next)
-    },
-  },
-  {
-    name: "v-20bca1eb",
-    path: "/docs/guide/authentication.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-20bca1eb").then(next)
-    },
-  },
-  {
-    name: "v-31fbbe2a",
+    name: "v-6ba0dc42",
     path: "/docs/class/generators.html",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-31fbbe2a").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-6ba0dc42").then(next)
     },
   },
   {
-    name: "v-186ee92a",
-    path: "/docs/guide/contributing.html",
+    name: "v-d1d19882",
+    path: "/docs/class/custom.html",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-186ee92a").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-d1d19882").then(next)
     },
   },
   {
-    name: "v-2f18c7cb",
-    path: "/docs/guide/examples.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-2f18c7cb").then(next)
-    },
-  },
-  {
-    name: "v-496c46c3",
-    path: "/docs/guide/license.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-496c46c3").then(next)
-    },
-  },
-  {
-    name: "v-8080682a",
-    path: "/docs/guide/quicklinks.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-8080682a").then(next)
-    },
-  },
-  {
-    name: "v-c120dc6a",
-    path: "/docs/guide/setup.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-c120dc6a").then(next)
-    },
-  },
-  {
-    name: "v-396ae0b2",
-    path: "/docs/guide/support.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-396ae0b2").then(next)
-    },
-  },
-  {
-    name: "v-6e64fd4c",
-    path: "/docs/intro.html",
-    component: GlobalLayout,
-    beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-6e64fd4c").then(next)
-    },
-  },
-  {
-    name: "v-32bacaea",
+    name: "v-687a3f7f",
     path: "/docs/class/client.html",
     component: GlobalLayout,
     beforeEnter: (to, from, next) => {
-      ensureAsyncComponentsLoaded("Layout", "v-32bacaea").then(next)
+      ensureAsyncComponentsLoaded("Layout", "v-687a3f7f").then(next)
+    },
+  },
+  {
+    name: "v-16e1ff8e",
+    path: "/docs/class/gif.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-16e1ff8e").then(next)
+    },
+  },
+  {
+    name: "v-3382df86",
+    path: "/docs/class/effects.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-3382df86").then(next)
+    },
+  },
+  {
+    name: "v-0e456d70",
+    path: "/docs/functions.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-0e456d70").then(next)
+    },
+  },
+  {
+    name: "v-43c0709f",
+    path: "/docs/class/json.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-43c0709f").then(next)
+    },
+  },
+  {
+    name: "v-9c00d702",
+    path: "/docs/class/overlays.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-9c00d702").then(next)
+    },
+  },
+  {
+    name: "v-6e984242",
+    path: "/docs/guide/authentication.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-6e984242").then(next)
+    },
+  },
+  {
+    name: "v-4086214e",
+    path: "/docs/intro.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-4086214e").then(next)
+    },
+  },
+  {
+    name: "v-9fa73b42",
+    path: "/docs/guide/contributing.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-9fa73b42").then(next)
+    },
+  },
+  {
+    name: "v-01ecd2bf",
+    path: "/docs/guide/examples.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-01ecd2bf").then(next)
+    },
+  },
+  {
+    name: "v-98230292",
+    path: "/docs/guide/license.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-98230292").then(next)
+    },
+  },
+  {
+    name: "v-0dd83882",
+    path: "/docs/guide/setup.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-0dd83882").then(next)
+    },
+  },
+  {
+    name: "v-4dccc79b",
+    path: "/docs/guide/support.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-4dccc79b").then(next)
+    },
+  },
+  {
+    name: "v-ba258642",
+    path: "/docs/guide/quicklinks.html",
+    component: GlobalLayout,
+    beforeEnter: (to, from, next) => {
+      ensureAsyncComponentsLoaded("Layout", "v-ba258642").then(next)
     },
   },
   {
