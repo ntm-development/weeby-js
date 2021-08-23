@@ -6,7 +6,7 @@ const config = {
     title: "Weeby-JS",
     head,
     theme: 'vuepress-theme-yuu',
-    base: '/docs/',
+    base: '/weeby-js/docs/',
     themeConfig: {
         logo: '/images/Icon.png',
         yuu: {
