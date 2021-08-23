@@ -4,20 +4,18 @@ const sidebar = {
 		'functions',
 		{
 			title: 'Guide',
-			collapsable: true,
+			collapsable: false,
 			children: [
 				'/docs/guide/setup', 
 				'/docs/guide/authentication',
 				'/docs/guide/examples',
-				'/docs/guide/contributing',
-				'/docs/guide/support',
 				'/docs/guide/quicklinks',
 				'/docs/guide/license',
 			]
 		},
 		{
 			title: 'Classes',
-			collapsable: true,
+			collapsable: false,
 			children: [
 				'/docs/class/client',
 				'/docs/class/custom',
