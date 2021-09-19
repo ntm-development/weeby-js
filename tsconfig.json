@@ -1,0 +1,13 @@
+{
+    "include": [
+        "src/**/*.js",
+        "index.js"
+    ],
+    "compilerOptions": {
+        "target": "es2019",
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "allowJs": true,
+        "declarationDir": "./typings",
+    }
+}
