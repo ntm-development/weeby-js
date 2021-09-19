@@ -39,6 +39,7 @@
     "chalk": "^4.1.0",
     "node-superfetch": "^0.2.2"
   },
+  "types": "typings/index.d.ts",
   "keywords": [
     "api",
     "rest-api",
