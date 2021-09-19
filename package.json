@@ -8,7 +8,8 @@
     "docs:dev": "vuepress dev docs --temp .temp",
     "docs:build": "vuepress build docs",
     "test": "eslint --ignore-path .eslintignore .",
-    "lint": "eslint --fix --ignore-path .eslintignore ."
+    "lint": "eslint --fix --ignore-path .eslintignore .",
+    "types": "tsc"
   },
   "repository": {
     "type": "git",
