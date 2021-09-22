@@ -1,0 +1,13 @@
+{
+    "include": [
+        "src/**/*.js",
+        "index.js"
+    ],
+    "compilerOptions": {
+        "target": "ESNext",
+        "declaration": true,
+        "emitDeclarationOnly": true,
+        "allowJs": true,
+        "declarationDir": "./typings",
+    }
+}

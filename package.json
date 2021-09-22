@@ -8,7 +8,8 @@
     "docs:dev": "vuepress dev docs --temp .temp",
     "docs:build": "vuepress build docs",
     "test": "eslint --ignore-path .eslintignore .",
-    "lint": "eslint --fix --ignore-path .eslintignore ."
+    "lint": "eslint --fix --ignore-path .eslintignore .",
+    "types": "tsc"
   },
   "repository": {
     "type": "git",
@@ -31,12 +32,14 @@
     "eslint": "^7.32.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
-    "jsdoc": "^3.6.7"
+    "jsdoc": "^3.6.7",
+    "typescript": "^4.4.3"
   },
   "dependencies": {
     "chalk": "^4.1.0",
     "node-superfetch": "^0.2.2"
   },
+  "types": "typings/index.d.ts",
   "keywords": [
     "api",
     "rest-api",

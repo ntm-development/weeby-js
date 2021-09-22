@@ -6,7 +6,6 @@ const twoImages = require("../../assets/generators/twoImages.json");
 const texts = require("../../assets/generators/text.json");
 const twoTexts = require("../../assets/generators/twoText.json");
 const textImage = require("../../assets/generators/textImage.json");
-const spotifySearching = require("../../assets/generators/spotify.json");
 
 /**
 * @class Generators
@@ -306,35 +305,6 @@ class Generators {
                 .query({ username: options.username, tweet: options.tweet });
 
             return body;
-        } catch (e) {
-            throw new Error(e);
-        }
-    }
-
-    /**
-      * Generates a Spotify Banner of statistics and information from either music, playlists or users. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {('album'|'artist'|'playlist'|'track'|'user')} options.type - The type of Spotify Search. (album, artist, playlist, track or user)
-      * @param {string} options.query - The value to search up. (Use %20 for spaces)
-      * @returns {Promise<buffer>} The generated image in a buffer.
-      */
-    async spotifySearch(options = {}) {
-        try {
-            if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
-            if (typeof options.query !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Query parameter is not a string.")}`);
-            if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
-            if (!options.query) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Query parameter is missing. You will need to provide some text.")}`);
-
-            if (spotifySearching.includes(options.type)) {
-                const { body } = await get(`${this.baseURL}/spotify/${options.type}`)
-                    .set("Authorization", `Bearer ${this.token}`)
-                    .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                    .query({ type: options.type, query: options.query });
-
-                return body;
-            } else {
-                throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The generator you tried to request was not found. Make sure it is spelt correctly.")}`);
-            }
         } catch (e) {
             throw new Error(e);
         }
