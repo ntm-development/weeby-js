@@ -135,17 +135,6 @@ declare class Generators {
         tweet: string;
     }): Promise<any>;
     /**
-      * Generates a Spotify Banner of statistics and information from either music, playlists or users. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {('album'|'artist'|'playlist'|'track'|'user')} options.type - The type of Spotify Search. (album, artist, playlist, track or user)
-      * @param {string} options.query - The value to search up. (Use %20 for spaces)
-      * @returns {Promise<buffer>} The generated image in a buffer.
-      */
-    spotifySearch(options?: {
-        type: ('album' | 'artist' | 'playlist' | 'track' | 'user');
-        query: string;
-    }): Promise<any>;
-    /**
       * Generates a Fake Spotify Now Playing Image. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
       * @param {Object} options - The options that contain the required parameters.
       * @param {string} options.image - The link to an image (.png, .jpg, .gif)

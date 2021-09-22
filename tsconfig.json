@@ -4,7 +4,7 @@
         "index.js"
     ],
     "compilerOptions": {
-        "target": "es2019",
+        "target": "ESNext",
         "declaration": true,
         "emitDeclarationOnly": true,
         "allowJs": true,
