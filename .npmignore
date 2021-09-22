@@ -3,3 +3,4 @@ docs
 .temp
 markdown
 CNAME
+.env
