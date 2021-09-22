@@ -1,15 +1,13 @@
 {
   "name": "weeby-js",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "JavaScript Wrapper for Weeby API",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "docs:dev": "vuepress dev docs --temp .temp",
-    "docs:build": "vuepress build docs",
+    "docs": "jsdoc -c .jsdoc.json",
     "test": "eslint --ignore-path .eslintignore .",
-    "lint": "eslint --fix --ignore-path .eslintignore .",
-    "types": "tsc"
+    "lint": "eslint --fix --ignore-path .eslintignore ."
   },
   "repository": {
     "type": "git",
@@ -28,7 +26,8 @@
   "devDependencies": {
     "common-tags": "^1.8.0",
     "discord.js": "^12.5.3",
-    "dotenv": "^8.6.0",
+    "docdash": "^1.2.0",
+    "dotenv": "^10.0.0",
     "eslint": "^7.32.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",

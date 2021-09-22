@@ -70,6 +70,19 @@ declare class Generators {
         text: string;
     }): Promise<any>;
     /**
+      * Draws one image and one text on a Among Us Generator.
+      * @param {Object} options - The options that contain the required parameters.
+      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
+      * @param {string} options.text - The text to print.
+      * @param {('ejected'|'imposter'|'notimposter')} options.outcome - The type of outcome to display in the text.
+      * @returns {Promise<buffer>} The generated image in a buffer.
+      */
+    eject(options?: {
+      image: string;
+      text: string;
+      outcome: ('ejected' | 'imposter' | 'notimposter');
+    }): Promise<any>;
+    /**
       * Prints two images and texts on a friendship banner. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
       * @param {Object} options - The options that contain the required parameters.
       * @param {string} options.firstImage - The link to the first image (.png, .jpg, .gif)
@@ -148,6 +161,17 @@ declare class Generators {
         songName: string;
         artist: string;
         userPicks: string;
+    }): Promise<any>;
+    /**
+      * Draws one image on an animated triggered GIF.
+      * @param {Object} options - The options that contain the required parameters.
+      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
+      * @param {boolean} [options.tint=true] - Whether the generated GIF should have a orange tint. Defaults to True.
+      * @returns {Promise<buffer>} The generated image in a buffer.
+      */
+    triggered(options?: {
+        image: string;
+        tint?: boolean;
     }): Promise<any>;
     /**
       * Generates a image with the specified currency and its amount.

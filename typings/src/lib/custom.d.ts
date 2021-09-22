@@ -20,6 +20,7 @@ declare class Custom {
       * @param {string} [options.nameHex=000000] - The color of the name text. (Do not include the hashtag).
       * @param {string} [options.circleHex=000000] - The color of the avatar border. (Do not include the hashtag).
       * @param {string} [options.messageHex=000000] - The color of the message text. (Do not include the hashtag).
+      * @param {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky')} [options.font=gotham] - The font to use, 'gotham' by default.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     greeting(options?: {
@@ -32,6 +33,7 @@ declare class Custom {
         nameHex?: string;
         circleHex?: string;
         messageHex?: string;
+        font?: string;
     }): Promise<any>;
     /**
       * Creates a customisable booster add/remove image with Icon, Name and Background. Optional queries can let you customise the color of each element.
@@ -45,6 +47,7 @@ declare class Custom {
       * @param {string} [options.nameHex=FFFFFF] - The color of the name text. (Do not include the hashtag).
       * @param {string} [options.circleHex=9f50a7] - The color of the avatar border. (Do not include the hashtag).
       * @param {string} [options.messageHex=9f50a7] - The color of the message text. (Do not include the hashtag).
+      * @param {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky')} [options.font=nexa] - The font to use, 'nexa' by default.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     booster(options?: {
@@ -57,6 +60,7 @@ declare class Custom {
         nameHex?: string;
         circleHex?: string;
         messageHex?: string;
+        font?: string;
     }): Promise<any>;
     /**
       * Creates a customisable rank card with Icon, Name, and leveling stats.
@@ -83,6 +87,7 @@ declare class Custom {
       * @param {string} options.borderColor - The color of the avatar border. (Do not include the hashtag).
       * @param {number} options.oldlevel - The old level of the user.
       * @param {number} options.newlevel - The new level of the user.
+      * @param {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky')} [options.font=nexa] - The font to use, 'nexa' by default.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     levelUp(options?: {
@@ -91,5 +96,6 @@ declare class Custom {
         borderColor: string;
         oldlevel: number;
         newlevel: number;
+        font?: string;
     }): Promise<any>;
 }

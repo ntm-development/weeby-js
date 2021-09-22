@@ -11,6 +11,7 @@ Official JavaScript API Wrapper for [Weeby API](https://weebyapi.xyz/).
 - Includes all methods from Weeby API
 - Object-Oriented
 - Beginner friendly
+- Support for TypeScript
 
 ## 💾 Installation
 ```bash
@@ -76,6 +77,9 @@ await weeby.generators.twoText({ type: String, textOne: String, textTwo: String 
 // Image and Text
 await weeby.generators.textImage({ type: String, image: String<url>, text: String });
 
+// Eject
+await weeby.generators.eject({ image: String<url>, text: String, outcome: String });
+
 // Friendship
 await weeby.generators.friendship({ firstImage: String<url>, secondImage: String<url>, firstText: String, secondText: String });
 
@@ -91,11 +95,11 @@ await weeby.generators.tweet({ avatar: String<url>, username: String, tweet: Str
 // Tweet Fetch (using Twitter API)
 await weeby.generators.tweetFetch({ username: String, tweet: String });
 
-// Spotify Search
-await weeby.generators.spotifySearch({ type: String, query: String });
-
 // Spotify Now Playing
 await weeby.generators.spotifyNp({ image: String<url>, songName: String, artist: String, userPicks: String });
+
+// Triggered
+await weeby.generators.triggered({ image: String<url> });
 
 // Currency
 await weeby.generators.currency({ type: String, amount: Number });

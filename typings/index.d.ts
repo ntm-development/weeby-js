@@ -1,3 +1,8 @@
+/** 
+ * Weeby API Definitions
+ * Written by WiseDevHelper (Wise)
+*/
+
 export = WeebyAPI;
 /**
 * @class Client

@@ -9,12 +9,12 @@ const { version } = require("./package.json");
 
 /**
 * @class Client
-* @classdesc weeby-js - The official JavaScript wrapper for Weeby API, developed by NTM Development. Website: https://weebyapi.xyz/
+* @classdesc weeby-js - The official JavaScript wrapper for Weeby API, developed by NTM Development. Click [here](https://weebyapi.xyz/) for the website.
 */
 class WeebyAPI {
     /**
        * @constructor
-       * @param {string} token - Your Weeby API Token. Get this by applying through the Weeby API bot on the Discord Server. https://discord.com/invite/G2rb53z
+       * @param {string} token - Your Weeby API Token. Get this by applying through the Weeby API bot on the [Discord Server](https://discord.com/invite/G2rb53z), or through the [Dashboard Application Page](https://weebyapi.xyz/dashboard/apply).
        */
     constructor(token) {
         if (typeof token !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Error whilst attempting to authenticate. Make sure your token is a string.")}`);

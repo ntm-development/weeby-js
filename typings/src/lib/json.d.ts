@@ -21,7 +21,13 @@ declare class JSON {
       */
     response(type: string): Promise<string>;
     /**
-      * Returns a random response.
+      * Returns a random SFW Meme from a Subreddit.
+      * @param {('meme'|'memes'|'wholesomememes'|'dankmemes')} category - The name of the category.
+      * @returns {Promise<memeResponse>} The returned JSON object.
+      */
+    meme(category: string): Promise<memeResponse>;
+    /**
+      * Formats the provided text into a different style.
       * @param {Object} options - The options that contain the required parameters.
       * @param {string} options.type - The type of text formatter.
       * @param {string} options.text - The text to format.
@@ -45,6 +51,7 @@ declare class JSON {
 }
 declare namespace JSON {
     export { lyricsResponse };
+    export { memeResponse };
 }
 /**
  * - The response for json.lyrics
@@ -116,4 +123,50 @@ type lyricsResponse = {
      * - The lyrics of the song.
      */
     lyrics: string;
+};
+
+/** 
+ * - The response for json.meme
+ */
+type memeResponse = {
+    /**
+     * - The name of the Subreddit.
+     */
+    subreddit: string;
+    /**
+     * - The URL of the Subreddit.
+     */
+    subredditURL: string;
+    /**
+     * - The image URL of the post.
+     */
+    url: string;
+    /**
+     * - The URL of of the post.
+     */
+    permaURL: string;
+    /**
+     * - The title of the post.
+     */
+    title: string;
+    /**
+     * - The author of the post.
+     */
+    author: string;
+    /**
+     * - The date the post was created.
+     */
+    date: string;
+    /**
+     * - The number of scores the post earned.
+     */
+    score: number;
+    /**
+     * - The number of comments on the post.
+     */
+    comments: number;
+    /**
+     * - The number of awards given on the post.
+     */
+    awards: number;
 };

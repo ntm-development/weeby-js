@@ -85,6 +85,30 @@ client.on("message", async message => {
         message.channel.send(embed);
     }
 
+    if (cmd === "eject") {
+        const eject = await weeby.generators.eject({ image: "https://cdn.weebyapi.xyz/img/static/IconBG.png", outcome: "imposter", text: "Hello World" });
+
+        const embed = new MessageEmbed()
+            .setTitle(`**Eject**`)
+            .setColor(`#E881D1`)
+            .attachFiles({ attachment: eject, name: "eject.png" })
+            .setImage("attachment://eject.png");
+
+        message.channel.send(embed);
+    }
+
+    if (cmd === "triggered") {
+        const triggered = await weeby.generators.triggered({ image: "https://cdn.weebyapi.xyz/img/static/IconBG.png", tint: false });
+
+        const embed = new MessageEmbed()
+            .setTitle(`**Triggered**`)
+            .setColor(`#E881D1`)
+            .attachFiles({ attachment: triggered, name: "triggered.png" })
+            .setImage("attachment://triggered.png");
+
+        message.channel.send(embed);
+    }
+
     if (cmd === "friendship") {
         const image = await weeby.generators.friendship({ firstImage: message.author.displayAvatarURL({ dynamic: true, size: 1024, format: "png" }), secondImage: "https://i.imgur.com/ZgrxPgU.png", firstText: message.author.username, secondText: "Nate???" });
 
@@ -141,18 +165,6 @@ client.on("message", async message => {
             .setColor(`#76d6ff`)
             .attachFiles({ attachment: image, name: "tweetFetch.png" })
             .setImage("attachment://tweetFetch.png");
-
-        message.channel.send(embed);
-    }
-
-    if (cmd === "spotifysearch") {
-        const image = await weeby.generators.spotifySearch({ type: "track", query: "Thriller" });
-
-        const embed = new MessageEmbed()
-            .setTitle(`**Spotify Search**`)
-            .setColor(`#1db954`)
-            .attachFiles({ attachment: image, name: "spotifySearch.png" })
-            .setImage("attachment://spotifySearch.png");
 
         message.channel.send(embed);
     }
@@ -245,7 +257,7 @@ client.on("message", async message => {
     }
 
     if (cmd === "welcome") {
-        const image = await weeby.custom.greeting({ icon: "https://i.imgur.com/ZgrxPgU.png", background: "https://i.imgur.com/K5QxYa2.png", greet: "Welcome", name: "Nate", message: "Hello and Welcome!", greetHex: "E881D1", messageHex: "76d6ff", circleHex: "6b6d75", nameHex: "e889e0" });
+        const image = await weeby.custom.greeting({ icon: "https://i.imgur.com/ZgrxPgU.png", background: "https://i.imgur.com/K5QxYa2.png", greet: "Welcome", name: "Nate", message: "Hello and Welcome!", greetHex: "E881D1", messageHex: "76d6ff", circleHex: "6b6d75", nameHex: "e889e0", font: "riffic" });
 
         const embed = new MessageEmbed()
             .setTitle(`**Welcome**`)
@@ -257,7 +269,7 @@ client.on("message", async message => {
     }
 
     if (cmd === "booster") {
-        const image = await weeby.custom.booster({ icon: "https://i.imgur.com/ZgrxPgU.png", background: "https://i.imgur.com/K5QxYa2.png", title: "Boost ADDED!", name: "Nate", message: "Thanks for boosting, my bro :)", titleHex: "E881D1", messageHex: "76d6ff", circleHex: "fee75c", nameHex: "57f287" });
+        const image = await weeby.custom.booster({ icon: "https://i.imgur.com/ZgrxPgU.png", background: "https://i.imgur.com/K5QxYa2.png", title: "Boost ADDED!", name: "Nate", message: "Thanks for boosting, my bro :)", titleHex: "E881D1", messageHex: "76d6ff", circleHex: "fee75c", nameHex: "57f287", font: "cornerofthesky" });
 
         const embed = new MessageEmbed()
             .setTitle(`**Booster**`)
@@ -281,7 +293,7 @@ client.on("message", async message => {
     }
 
     if (cmd === "levelup") {
-        const image = await weeby.custom.levelUp({ avatar: "https://i.imgur.com/ZgrxPgU.png", bgColor: "9c81f2", borderColor: "6b6d75", oldlevel: 5, newlevel: 7 });
+        const image = await weeby.custom.levelUp({ avatar: "https://i.imgur.com/ZgrxPgU.png", bgColor: "9c81f2", borderColor: "6b6d75", oldlevel: 5, newlevel: 7, font: "pinkycupid" });
 
         const embed = new MessageEmbed()
             .setTitle(`**${message.author.username}'s Level Up**`)
@@ -382,30 +394,30 @@ client.on("message", async message => {
                 {
                     name: "**Requests**",
                     value: stripIndents`
-            Generators **» \`${res.category.generators}\`**
-            GIF **» \`${res.category.gif}\`**
-            Custom **» \`${res.category.custom}\`**
-            JSON **» \`${res.category.json}\`**
-            Effects **» \`${res.category.effects}\`**
-            Overlays **» \`${res.category.overlays}\`**    
-            `,
+                    Generators **» \`${res.category.generators}\`**
+                    GIF **» \`${res.category.gif}\`**
+                    Custom **» \`${res.category.custom}\`**
+                    JSON **» \`${res.category.json}\`**
+                    Effects **» \`${res.category.effects}\`**
+                    Overlays **» \`${res.category.overlays}\`**    
+                    `,
                     inline: true
                 },
                 {
                     name: "**Usage**",
                     value: stripIndents`
-            Memory **» \`${res.usage.memory}mb\`**
-            CPU **» \`${res.usage.cpu}%\`**
-            Node CPU **» \`${res.usage.nodeCPU}%\`**        
-            `,
+                    Memory **» \`${res.usage.memory}mb\`**
+                    CPU **» \`${res.usage.cpu}%\`**
+                    Node CPU **» \`${res.usage.nodeCPU}%\`**        
+                    `,
                     inline: true
                 },
                 {
                     name: "**Misc.**",
                     value: stripIndents`
-            Registered Users **» \`${res.registeredUsers}\`**
-            Lifetime Requests **» \`${res.lifetimeRequests}\`**
-          `,
+                    Registered Users **» \`${res.registeredUsers}\`**
+                    Lifetime Requests **» \`${res.lifetimeRequests}\`**
+                    `,
                     inline: true
                 }
             );
