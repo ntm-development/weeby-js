@@ -85,7 +85,12 @@
 <pre class="prettyprint source lang-bash"><code>npm install weeby-js --save
 </code></pre>
 <h2>🗝 Authentication</h2>
-<p><code>weeby-js</code> requires an authorization token which can be obtained by joining the <a href="https://weebyapi.xyz/discord">NTM Discord Server</a>, and then running the <code>/apply</code> command with the Weeby API bot. To learn more in deep about the application process, please visit the <a href="https://weebyapi.xyz/">Weeby API Website</a>.</p>
+<p><code>weeby-js</code> requires an authorization token which can be obtained by doing one of the following methods:</p>
+<ul>
+<li>Joining the <a href="https://weebyapi.xyz/discord">NTM Central Discord Server</a>, and then running the <code>/apply</code> command with the Weeby API bot.</li>
+<li>Logging into the <a href="https://weebyapi.xyz/dashboard">Dashboard</a> and then using the <a href="https://weebyapi.xyz/dashboard/apply">application form</a> and filling in the required fields.</li>
+</ul>
+<p>To learn more in deep about the application process, please visit the <a href="https://weebyapi.xyz/gettingstarted">Getting Started</a> page.</p>
 <blockquote>
 <p>Upon being accepted into Weeby API. It is very important to <strong>never</strong> show this token to anybody.</p>
 </blockquote>
@@ -95,7 +100,7 @@
 const weeby = new WeebyAPI(&quot;YOUR_TOKEN&quot;);
 
 let gif = await weeby.gif.fetch(&quot;pat&quot;);
-console.log(gif); // -> https://weebyapi.xyz/img/gif/pat/13.gif
+console.log(gif); // -> https://cdn.weebyapi.xyz/img/gif/pat/13.gif
 </code></pre>
 <h3>Generator:</h3>
 <pre class="prettyprint source lang-js"><code>const WeebyAPI = require(&quot;weeby-js&quot;);

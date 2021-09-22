@@ -131,7 +131,7 @@ class JSON {
     }
 
     /**
-      * Returns a random response.
+      * Formats the provided text into a different style.
       * @param {Object} options - The options that contain the required parameters.
       * @param {string} options.type - The type of text formatter.
       * @param {string} options.text - The text to format.
@@ -160,7 +160,7 @@ class JSON {
     /**
       * Fetches lyrics from the Genius API.
       * @param {string} query - The lyrics to search. See https://weebyapi.xyz/api/docs#json for all the JSON endpoints.
-      * @returns {Promise&lt;lyricsResponse>} The lyrics and its informtation.
+      * @returns {Promise&lt;lyricsResponse>} The lyrics and its information.
       */
     async lyrics(query) {
         if (typeof query !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Query parameter is not a string.")}`);
@@ -231,7 +231,7 @@ module.exports = JSON;
 * @prop {String} title - The title of the post.
 * @prop {String} author - The author of the post.
 * @prop {String} date - The date the post was created.
-* @prop {Number} scores - The number of scores the post earned.
+* @prop {Number} score - The number of scores the post earned.
 * @prop {Number} comments - The number of comments on the post.
 * @prop {Number} awards - The number of awards given on the post.
 */</code></pre>
