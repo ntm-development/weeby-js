@@ -13,7 +13,7 @@ const textImage = require("../../assets/generators/textImage.json");
 class Generators {
     constructor(token, baseURL) {
         /**
-         * The Weeby-API token
+         * The Weeby API token
          * @type {string}
          * @private
         */

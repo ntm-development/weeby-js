@@ -9,7 +9,7 @@ const overlay = require("../../assets/overlays.json");
 class Overlays {
     constructor(token, baseURL) {
         /**
-         * The Weeby-API token
+         * The Weeby API token
          * @type {string}
          * @private
         */

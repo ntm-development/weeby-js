@@ -8,7 +8,7 @@ const { version } = require("../../package.json");
 class Custom {
     constructor(token, baseURL) {
         /**
-         * The Weeby-API token
+         * The Weeby API token
          * @type {string}
          * @private
         */

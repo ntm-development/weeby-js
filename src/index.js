@@ -18,13 +18,53 @@ class WeebyAPI {
      */
     constructor(token) {
         if (typeof token !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Error whilst attempting to authenticate. Make sure your token is a string.")}`);
+
+        /**
+         * The base URL of the API.
+         * @type {string}
+         */
         this.baseURL = "https://weebyapi.xyz";
+
+        /**
+         * The version of the API.
+         * @type {string}
+         */
         this.version = version;
+
+        /**
+         * The generators module.
+         * @type {Generators}
+         */
         this.generators = new Generators(token, `${this.baseURL}/generators/`);
+
+        /**
+         * The GIF module.
+         * @type {GIF}
+         */
         this.gif = new GIF(token, `${this.baseURL}/gif/`);
+
+        /**
+         * The overlays module.
+         * @type {Overlays}
+         */
         this.overlays = new Overlays(token, `${this.baseURL}/overlays/`);
+
+        /**
+         * The effects module.
+         * @type {Effects}
+         */
         this.effects = new Effects(token, `${this.baseURL}/effects/`);
+
+        /**
+         * The JSON module.
+         * @type {JSON}
+         */
         this.json = new JSON(token, `${this.baseURL}/json/`);
+
+        /**
+         * The custom module.
+         * @type {Custom}
+         */
         this.custom = new Custom(token, `${this.baseURL}/custom/`);
     }
 }

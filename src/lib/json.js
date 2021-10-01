@@ -11,7 +11,7 @@ const textFormatters = require("../../assets/json/formatters.json");
 class JSON {
     constructor(token, baseURL) {
         /**
-         * The Weeby-API token
+         * The Weeby API token
          * @type {string}
          * @private
         */

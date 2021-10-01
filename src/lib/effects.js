@@ -11,7 +11,7 @@ const level = require("../../assets/effects/level.json");
 class Effects {
     constructor(token, baseURL) {
         /**
-         * The Weeby-API token
+         * The Weeby API token
          * @type {string}
          * @private
         */
