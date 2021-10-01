@@ -8,10 +8,19 @@ const gifs = require("../../assets/gif.json");
 */
 class GIF {
     constructor(token, baseURL) {
-        /** @access private */
-        this.token = token;
-        /** @access private */
-        this.baseURL = baseURL;
+        /**
+         * The Weeby-API token
+         * @type {string}
+         * @private
+        */
+         this.token = token;
+
+         /**
+          * The base URL of the API
+          * @type {string}
+          * @private
+         */
+         this.baseURL = baseURL;
     }
 
     /**

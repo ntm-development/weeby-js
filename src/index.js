@@ -1,21 +1,21 @@
 const chalk = require("chalk");
-const Generators = require("./src/lib/generators");
-const GIF = require("./src/lib/gif");
-const Overlays = require("./src/lib/overlays");
-const JSON = require("./src/lib/json");
-const Custom = require("./src/lib/custom");
-const Effects = require("./src/lib/effects");
+const Generators = require("./lib/generators");
+const GIF = require("./lib/gif");
+const Overlays = require("./lib/overlays");
+const JSON = require("./lib/json");
+const Custom = require("./lib/custom");
+const Effects = require("./lib/effects");
 const { version } = require("./package.json");
 
 /**
+* Weeby-JS - The official JavaScript wrapper for Weeby API, developed by NTM Development. Click [here](https://weebyapi.xyz/) for the website.
 * @class Client
-* @classdesc weeby-js - The official JavaScript wrapper for Weeby API, developed by NTM Development. Click [here](https://weebyapi.xyz/) for the website.
 */
 class WeebyAPI {
     /**
-       * @constructor
-       * @param {string} token - Your Weeby API Token. Get this by applying through the Weeby API bot on the [Discord Server](https://discord.com/invite/G2rb53z), or through the [Dashboard Application Page](https://weebyapi.xyz/dashboard/apply).
-       */
+     * @constructor
+     * @param {string} token - Your Weeby API Token. Get this by applying through the Weeby API bot on the [Discord Server](https://discord.com/invite/G2rb53z), or through the [Dashboard Application Page](https://weebyapi.xyz/dashboard/apply).
+     */
     constructor(token) {
         if (typeof token !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Error whilst attempting to authenticate. Make sure your token is a string.")}`);
         this.baseURL = "https://weebyapi.xyz";
