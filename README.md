@@ -30,28 +30,28 @@ To learn more in deep about the application process, please visit the [Getting S
 ## 🏳 Examples
 ### GIF:
 ```js
-const WeebyAPI = require("weeby-js");
-const weeby = new WeebyAPI("YOUR_TOKEN");
+const WeebyAPI = require('weeby-js');
+const weeby = new WeebyAPI('YOUR_TOKEN');
 
-let gif = await weeby.gif.fetch("pat");
+let gif = await weeby.gif.fetch('pat');
 console.log(gif); // -> https://cdn.weebyapi.xyz/img/gif/pat/13.gif
 ```
 
 ### Generator:
 ```js
-const WeebyAPI = require("weeby-js");
-const weeby = new WeebyAPI("YOUR_TOKEN");
+const WeebyAPI = require('weeby-js');
+const weeby = new WeebyAPI('YOUR_TOKEN');
 
-let image = await weeby.generators.oneImage({ type: "3000years", image: "https://i.imgur.com/ZgrxPgU.png" });
+let image = await weeby.generators.oneImage({ type: '3000years', image: 'https://i.imgur.com/ZgrxPgU.png' });
 message.channel.send({files: [{ attachment: image }]}); // -> Image Buffer
 ```
 
 ### Lyrics:
 ```js
-const WeebyAPI = require("weeby-js");
-const weeby = new WeebyAPI("YOUR_TOKEN");
+const WeebyAPI = require('weeby-js');
+const weeby = new WeebyAPI('YOUR_TOKEN');
 
-let lyrics = await weeby.generators.lyrics("Thriller");
+let lyrics = await weeby.generators.lyrics('Thriller');
 message.channel.send(lyrics.track.name); // -> Object
 ```
 

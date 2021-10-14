@@ -2,10 +2,11 @@
   "name": "weeby-js",
   "version": "1.2.0",
   "description": "JavaScript Wrapper for Weeby API",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node index.js",
-    "docs": "jsdoc -c .jsdoc.json",
+    "start": "node .",
+    "docs": "docgen --source src --custom docs/index.yml --output docs/docs.json",
+    "docs:test": "docgen --source src --custom docs/index.yml",
     "test": "eslint --ignore-path .eslintignore .",
     "lint": "eslint --fix --ignore-path .eslintignore ."
   },
@@ -24,6 +25,7 @@
   },
   "homepage": "https://js.weebyapi.xyz/",
   "devDependencies": {
+    "@discordjs/docgen": "^0.10.0",
     "common-tags": "^1.8.0",
     "discord.js": "^12.5.3",
     "docdash": "^1.2.0",
