@@ -269,7 +269,7 @@ client.on("message", async message => {
     }
 
     if (cmd === "booster") {
-        const image = await weeby.custom.booster({ icon: "https://i.imgur.com/ZgrxPgU.png", background: "https://i.imgur.com/K5QxYa2.png", title: "Boost ADDED!", name: "Nate", message: "Thanks for boosting, my bro :)", titleHex: "E881D1", messageHex: "76d6ff", circleHex: "fee75c", nameHex: "57f287", font: "cornerofthesky" });
+        const image = await weeby.custom.booster({ icon: "https://i.imgur.com/ZgrxPgU.png", background: "https://i.imgur.com/CBYBpOH.png", title: "Boost ADDED!", name: "Nate", message: "Thanks for boosting, my bro :)", titleHex: "E881D1", messageHex: "76d6ff", circleHex: "fee75c", nameHex: "57f287", font: "cornerofthesky" });
 
         const embed = new MessageEmbed()
             .setTitle(`**Booster**`)
