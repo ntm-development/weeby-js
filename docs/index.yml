@@ -4,6 +4,7 @@
       id: welcome
       path: ../../README.md
 - name: Guide
+  files:
     - name: Setup
       id: setup
       path: setup.md
