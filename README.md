@@ -14,7 +14,7 @@
 </div>
 
 # Weeby-JS
-Weeby-JS is the official JavaScript API Wrapper which is powerful and allows easy interaction with the [Weeby API](https://weebyapi.xyz/) endpoints. Actively maintained by [NTM Development](https://dev.ntmcentral.xyz/) and community members, Weeby-JS receives new updates shortly after new features have been released on the API.
+Weeby-JS is the official JavaScript API Wrapper which is powerful and allows easy interaction with the [Weeby API](https://weebyapi.xyz/) endpoints. Actively maintained by [NTM Development](https://dev.ntmcentral.xyz/) and community members, Weeby-JS receives new updates shortly after new features have been released to the API.
 
 ## Features
 - Super simple and easy to use
