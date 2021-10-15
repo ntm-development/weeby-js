@@ -24,7 +24,8 @@ npm i -g --add-python-to-path --vs2015 --production windows-build-tools
 WEEBY_TOKEN=<your token>
 ```
 
-5. Now, in your `index.js` file (or any other file), add the following code:)
+5. Now, in your `index.js` file (or any other file), add the following code:
+
 ```js
 const WeebyAPI = require('weeby-js');
 require('dotenv').config();)
