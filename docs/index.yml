@@ -3,3 +3,13 @@
     - name: Welcome
       id: welcome
       path: ../../README.md
+- name: Guide
+    - name: Setup
+      id: setup
+      path: setup.md
+    - name: Authentication
+      id: authentication
+      path: authentication.md
+    - name: Examples
+      id: examples
+      path: examples.md
