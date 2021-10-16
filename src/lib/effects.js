@@ -11,19 +11,19 @@ const level = require("../../assets/effects/level.json");
 class Effects {
     constructor(token, baseURL) {
         /**
-         * The Weeby API token
+         * Your Weeby API Token.
          * @type {string}
          * @private
         */
          this.token = token;
 
          /**
-          * The base URL of the API
+          * The base URL.
           * @type {string}
           * @private
          */
          this.baseURL = baseURL;
-    }
+     }
 
     /**
       * Applies an effect to the provided image. Please see https://weebyapi.xyz/api/docs#effects for the available effects.

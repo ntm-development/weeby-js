@@ -11,14 +11,14 @@ const textFormatters = require("../../assets/json/formatters.json");
 class JSON {
     constructor(token, baseURL) {
         /**
-         * The Weeby API token
+         * Your Weeby API Token.
          * @type {string}
          * @private
         */
          this.token = token;
 
          /**
-          * The base URL of the API
+          * The base URL.
           * @type {string}
           * @private
          */
@@ -59,8 +59,6 @@ class JSON {
             .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
 
         if (responses.includes(type)) {
-            console.log(body.response);
-
             return body.response;
         } else {
             throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Response Category you tried to request was not found. Make sure it is spelt correctly.")}`);
@@ -70,7 +68,7 @@ class JSON {
     /**
       * Returns a random SFW Meme from a Subreddit.
       * @param {('meme'|'memes'|'wholesomememes'|'dankmemes')} category - The name of the category.
-      * @returns {Promise<memeResponse>} The returned JSON object.
+      * @returns {Promise<MemeResponse>} The returned JSON object.
       */
     async meme(category) {
         if (typeof category !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Category parameter is not a string.")}`);
@@ -103,8 +101,6 @@ class JSON {
             .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
 
         if (textFormatters.includes(options.type)) {
-            console.log(body.output);
-
             return body.output;
         } else {
             throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text Formatter Category you tried to request was not found. Make sure it is spelt correctly.")}`);
@@ -114,7 +110,7 @@ class JSON {
     /**
       * Fetches lyrics from the Genius API.
       * @param {string} query - The lyrics to search. See https://weebyapi.xyz/api/docs#json for all the JSON endpoints.
-      * @returns {Promise<lyricsResponse>} The lyrics and its information.
+      * @returns {Promise<LyricsResponse>} The lyrics and its information.
       */
     async lyrics(query) {
         if (typeof query !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Query parameter is not a string.")}`);
@@ -144,7 +140,7 @@ class JSON {
 module.exports = JSON;
 
 /**
-* @typedef {Object} lyricsResponse - The response for json.lyrics
+* @typedef {Object} LyricsResponse - The response for json.lyrics
 * @prop {Number} id - The ID of the song.
 * @prop {String} url - The Genius Lyrics URL.
 * @prop {Object} track - The track object.
@@ -177,7 +173,7 @@ module.exports = JSON;
 */
 
 /**
-* @typedef {Object} memeResponse - The response for json.meme
+* @typedef {Object} MemeResponse - The response for json.meme
 * @prop {String} subreddit - The name of the Subreddit.
 * @prop {String} subredditURL - The URL of the Subreddit.
 * @prop {String} url - The image URL of the post.

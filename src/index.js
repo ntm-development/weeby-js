@@ -5,6 +5,7 @@ const Overlays = require("./lib/overlays");
 const JSON = require("./lib/json");
 const Custom = require("./lib/custom");
 const Effects = require("./lib/effects");
+const Utility = require("./lib/utility");
 const { version } = require("./package.json");
 
 /**
@@ -14,19 +15,19 @@ const { version } = require("./package.json");
 class WeebyAPI {
     /**
      * @constructor
-     * @param {string} token - Your Weeby API Token. Get this by applying through the Weeby API bot on the [Discord Server](https://discord.com/invite/G2rb53z), or through the [Dashboard Application Page](https://weebyapi.xyz/dashboard/apply).
+     * @param {string} token - Your Weeby API Token.
      */
     constructor(token) {
         if (typeof token !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Error whilst attempting to authenticate. Make sure your token is a string.")}`);
 
         /**
-         * The base URL of the API.
+         * The base URL.
          * @type {string}
          */
         this.baseURL = "https://weebyapi.xyz";
 
         /**
-         * The version of the API.
+         * The wrapper version.
          * @type {string}
          */
         this.version = version;
@@ -66,6 +67,12 @@ class WeebyAPI {
          * @type {Custom}
          */
         this.custom = new Custom(token, `${this.baseURL}/custom/`);
+
+        /**
+         * The utility module.
+         * @type {Utility}
+         */
+        this.utility = new Utility(token, `${this.baseURL}/utility/`);
     }
 }
 
