@@ -28,7 +28,7 @@ declare class JSON {
     meme(category: string): Promise<memeResponse>;
     /**
       * Formats the provided text into a different style.
-      * @param {object} options - The options that contain the required parameters.
+      * @param {Object} options - The options that contain the required parameters.
       * @param {string} options.type - The type of text formatter.
       * @param {string} options.text - The text to format.
       * @returns {Promise<string>} The response in a string.

@@ -50,7 +50,7 @@ class Utility {
 module.exports = Utility;
 
 /**
- * @typedef {object} TopGGVoteCheckerResponse - The response from the Top.gg Vote Checker method.
+ * @typedef {Object} TopGGVoteCheckerResponse - The response from the Top.gg Vote Checker method.
  * @property {string} userID - The ID of the user.
  * @property {string} botID - The ID of the bot.
  * @property {number} dateVoted - The date the user voted (Unix Timestamp)
@@ -61,14 +61,14 @@ module.exports = Utility;
  */
 
 /**
- * @typedef {object} TopGGVoteListResponse - The response from the Top.gg Vote List method.
+ * @typedef {Object} TopGGVoteListResponse - The response from the Top.gg Vote List method.
  * @property {string} botID - The ID of the bot.
  * @property {boolean} isWeekend - Whether it's the weekend or not.
  * @property {VoteListData} votes - An array of objects containing the votes data.
  */
 
 /**
- * @typedef {object} VoteListData - The data for the votes.
+ * @typedef {Object} VoteListData - The data for the votes.
  * @property {string} userID - The ID of the user.
  * @property {number} dateVoted - The date the user voted (Unix Timestamp)
  * @property {number} currentVoteExpiry - The current expiry of the vote (12 Hours - Unix Timestamp)
@@ -77,14 +77,14 @@ module.exports = Utility;
  */
 
 /**
- * @typedef {object} TopGGTopVotesResponse - The response from the Top.gg Top Votes method.
+ * @typedef {Object} TopGGTopVotesResponse - The response from the Top.gg Top Votes method.
  * @property {string} botID - The ID of the bot.
  * @property {boolean} isWeekend - Whether it's the weekend or not.
  * @property {TopVotesData} votes - An array of objects containing the votes data.
  */
 
 /**
- * @typedef {object} TopVotesData - The data for the votes.
+ * @typedef {Object} TopVotesData - The data for the votes.
  * @property {number} index - The position the user is in on the array.
  * @property {string} userID - The ID of the user.
  * @property {number} dateVoted - The date the user voted (Unix Timestamp)
@@ -94,27 +94,27 @@ module.exports = Utility;
  */
 
 /**
- * @typedef {object} TranslateResponse - The response of the translate method.
- * @prop {object} from - The language the text was translated from.
+ * @typedef {Object} TranslateResponse - The response of the translate method.
+ * @prop {Object} from - The language the text was translated from.
  * @prop {string} from.language - The language code.
  * @prop {string} from.text - The text before translation.
- * @prop {object} to - The language the text was translated to.
+ * @prop {Object} to - The language the text was translated to.
  * @prop {string} to.language - The language code.
  * @prop {string} to.text - The text that was translated.
  */
 
 /**
- * @typedef {object} CurrencyConverterResponse - The response of the currency converter method.
- * @prop {object} from - The language the text was translated from.
+ * @typedef {Object} CurrencyConverterResponse - The response of the currency converter method.
+ * @prop {Object} from - The language the text was translated from.
  * @prop {string} from.type - The currency type the amount was converted from.
  * @prop {string} from.amount - The currency amount before conversion.
- * @prop {object} to - The language the text was translated to.
+ * @prop {Object} to - The language the text was translated to.
  * @prop {string} to.type - The currency type the amount was converted to.
  * @prop {string} to.amount - The currency amount after conversion.
  */
 
 /**
- * @typedef {object} WeatherResponse - The response for the Weather method.
+ * @typedef {Object} WeatherResponse - The response for the Weather method.
  * @prop {string} observationPoint - The location being observed.
  * @prop {string} conditions - The current conditions.
  * @prop {string} conditionsImageURL - The URL for the current conditions image.

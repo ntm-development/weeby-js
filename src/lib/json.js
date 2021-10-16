@@ -84,7 +84,7 @@ class JSON {
 
     /**
       * Formats the provided text into a different style.
-      * @param {object} options - The options that contain the required parameters.
+      * @param {Object} options - The options that contain the required parameters.
       * @param {string} options.type - The type of text formatter.
       * @param {string} options.text - The text to format.
       * @returns {Promise<string>} The response in a string.
@@ -140,27 +140,27 @@ class JSON {
 module.exports = JSON;
 
 /**
-* @typedef {object} LyricsResponse - The response for json.lyrics
+* @typedef {Object} LyricsResponse - The response for json.lyrics
 * @prop {number} id - The ID of the song.
 * @prop {string} url - The Genius Lyrics URL.
-* @prop {object} track - The track object.
+* @prop {Object} track - The track object.
 * @prop {string} track.name - The name of the song.
 * @prop {string} track.thumbnail - The thumbnail of the song.
 * @prop {string} track.media - The URL of the song.
-* @prop {object} artist - The artist object.
+* @prop {Object} artist - The artist object.
 * @prop {string} artist.name - The name of the artist.
 * @prop {string} artist.thumbnail - The thumbnail of the artist.
 * @prop {number} artist.id - The ID of the artist.
-* @prop {object} artist - The artist object.
-* @prop {object} album - The album object.
+* @prop {Object} artist - The artist object.
+* @prop {Object} album - The album object.
 * @prop {string} album.name - The name of the album.
 * @prop {string} album.thumbnail - The thumbnail of the album.
 * @prop {number} album.id - The ID of the album.
-* @prop {object} colors - The colors object.
+* @prop {Object} colors - The colors object.
 * @prop {string} colors.songArtPrimary - The primary color of the song art.
 * @prop {string} colors.songArtSecondary - The secondary color of the song art.
 * @prop {string} colors.songArtText - The text color of the song art.
-* @prop {object} stats - The stats object.
+* @prop {Object} stats - The stats object.
 * @prop {boolean} stats.hot - The number of views.
 * @prop {number} stats.pageViews - The number of page views.
 * @prop {number} stats.contributors - The number of contributors.
@@ -173,7 +173,7 @@ module.exports = JSON;
 */
 
 /**
-* @typedef {object} MemeResponse - The response for json.meme
+* @typedef {Object} MemeResponse - The response for json.meme
 * @prop {string} subreddit - The name of the Subreddit.
 * @prop {string} subredditURL - The URL of the Subreddit.
 * @prop {string} url - The image URL of the post.
