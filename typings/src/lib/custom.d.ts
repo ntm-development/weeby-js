@@ -10,7 +10,7 @@ declare class Custom {
     baseURL: any;
     /**
       * Creates a customisable greeting image with Icon, Name, Greet and Background. Optional parameters can let you customise the color of each element, or let you add a message.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.icon - The link to an image (.png, .jpg, .gif)
       * @param {string} options.background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
       * @param {string} options.name - The name of the greeted user.
@@ -37,7 +37,7 @@ declare class Custom {
     }): Promise<any>;
     /**
       * Creates a customisable booster add/remove image with Icon, Name and Background. Optional queries can let you customise the color of each element.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.icon - The link to an image (.png, .jpg, .gif)
       * @param {string} options.background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
       * @param {string} options.name - The name of the user who boosted the server.
@@ -64,7 +64,7 @@ declare class Custom {
     }): Promise<any>;
     /**
       * Creates a customisable rank card with Icon, Name, and leveling stats.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
       * @param {string} options.username - The username to print.
       * @param {string} options.bgColor - The color of the background.
@@ -81,7 +81,7 @@ declare class Custom {
     }): Promise<any>;
     /**
       * Creates a customisable level up card.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
       * @param {string} options.bgColor - The color of the background. (Do not include the hashtag).
       * @param {string} options.borderColor - The color of the avatar border. (Do not include the hashtag).

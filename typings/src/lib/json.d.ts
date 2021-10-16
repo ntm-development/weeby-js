@@ -28,7 +28,7 @@ declare class JSON {
     meme(category: string): Promise<memeResponse>;
     /**
       * Formats the provided text into a different style.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.type - The type of text formatter.
       * @param {string} options.text - The text to format.
       * @returns {Promise<string>} The response in a string.
@@ -45,7 +45,7 @@ declare class JSON {
     lyrics(query: string): Promise<lyricsResponse>;
     /**
       * Fetches Weeby API's current statistics.
-      * @returns {Promise<Object>} The statistics returned in a object.
+      * @returns {Promise<object>} The statistics returned in a object.
       */
     stats(): Promise<any>;
 }

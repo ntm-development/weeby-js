@@ -29,7 +29,7 @@ class Generators {
 
     /**
       * Draws one image on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.type - The Type of Generator.
       * @param {string} options.image - The link to an image (.png, .jpg, .gif)
       * @returns {Promise<buffer>} The generated image in a buffer.
@@ -58,7 +58,7 @@ class Generators {
 
     /**
       * Draws two images on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.type - The Type of Generator.
       * @param {string} options.firstImage - The link to the first image (.png, .jpg, .gif)
       * @param {string} options.secondImage - The link to the second image (.png, .jpg, .gif)
@@ -90,7 +90,7 @@ class Generators {
 
     /**
       * Prints text on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.type - The Type of Generator.
       * @param {string} options.text - The text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
@@ -119,7 +119,7 @@ class Generators {
 
     /**
       * Prints two texts on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.type - The Type of Generator.
       * @param {string} options.textOne - The first text to print.
       * @param {string} options.textTwo - The second text to print.
@@ -151,7 +151,7 @@ class Generators {
 
     /**
       * Draws an image and text on a requested generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.type - The type of Generator
       * @param {string} options.image - The link to an image (.png, .jpg, .gif)
       * @param {string} options.text - The text to print.
@@ -181,7 +181,7 @@ class Generators {
 
     /**
       * Draws one image and one text on a Among Us Generator.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.image - The link to an image (.png, .jpg, .gif)
       * @param {string} options.text - The text to print.
       * @param {('ejected'|'imposter'|'notimposter')} options.outcome - The type of outcome to display in the text.
@@ -209,7 +209,7 @@ class Generators {
 
     /**
       * Prints two images and texts on a friendship banner. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.firstImage - The link to the first image (.png, .jpg, .gif)
       * @param {string} options.secondImage - The link to the second image (.png, .jpg, .gif)
       * @param {string} options.firstText - The first text to print.
@@ -240,7 +240,7 @@ class Generators {
 
     /**
       * Draws an image, title and text on a demotivational poster. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.image - The link to an image (.png, .jpg, .gif)
       * @param {string} options.title - The title text to print.
       * @param {string} options.text - The text to print.
@@ -268,7 +268,7 @@ class Generators {
 
     /**
       * Draws a image, username and message on a Gravestone. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
       * @param {string} options.username - The username to print.
       * @param {string} options.message - The text to print.
@@ -296,7 +296,7 @@ class Generators {
 
     /**
       * Generates a raw twitter tweet with username, tweet text and avatar. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.username - The username to print.
       * @param {string} options.tweet - The text to print.
       * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
@@ -324,7 +324,7 @@ class Generators {
 
     /**
       * Generates a twitter tweet with username (fetched from the Twitter API) and the tweet text. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.username - The username to print.
       * @param {string} options.tweet - The text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
@@ -349,7 +349,7 @@ class Generators {
 
     /**
       * Generates a Fake Spotify Now Playing Image. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.image - The link to an image (.png, .jpg, .gif)
       * @param {string} options.songName - The name of the song to print.
       * @param {string} options.artist - The artist name to print.
@@ -380,7 +380,7 @@ class Generators {
 
     /**
       * Draws one image on an animated triggered GIF.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {string} options.image - The link to an image (.png, .jpg, .gif)
       * @param {boolean} [options.tint=true] - Whether the generated GIF should have a orange tint. Defaults to True.
       * @returns {Promise<buffer>} The generated image in a buffer.
@@ -405,7 +405,7 @@ class Generators {
 
     /**
       * Generates a image with the specified currency and its amount.
-      * @param {Object} options - The options that contain the required parameters.
+      * @param {object} options - The options that contain the required parameters.
       * @param {('dollar'|'euro'|'pound'|'yen')} options.type - The type of currency.
       * @param {number} options.amount - The amount of money to display.
       * @returns {Promise<buffer>} The generated image in a buffer.
