@@ -140,7 +140,7 @@ class JSON {
 module.exports = JSON;
 
 /**
-* @typedef {Object} LyricsResponse - The response for json.lyrics
+* @typedef {Object} LyricsResponse - The response object for lyrics.
 * @prop {number} id - The ID of the song.
 * @prop {string} url - The Genius Lyrics URL.
 * @prop {Object} track - The track object.
@@ -173,7 +173,7 @@ module.exports = JSON;
 */
 
 /**
-* @typedef {Object} MemeResponse - The response for json.meme
+* @typedef {Object} MemeResponse - The Meme Response object.
 * @prop {string} subreddit - The name of the Subreddit.
 * @prop {string} subredditURL - The URL of the Subreddit.
 * @prop {string} url - The image URL of the post.
