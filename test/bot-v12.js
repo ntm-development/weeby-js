@@ -182,7 +182,7 @@ client.on("message", async message => {
     }
 
     if (cmd === "currency") {
-        const image = await weeby.generators.currency({ type: "dollar", amount: 50000 });
+        const image = await weeby.generators.currency({ type: , amount: 50000 });
 
         const embed = new MessageEmbed()
             .setTitle(`**Color**`)

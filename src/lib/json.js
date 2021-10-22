@@ -4,7 +4,7 @@ const { version } = require("../../package.json");
 const word = require("../../assets/json/word.json");
 const responses = require("../../assets/json/response.json");
 const textFormatters = require("../../assets/json/formatters.json");
-
+const animalTypes = require("../../assets/json/animals.json");
 /**
 * @class JSON
 */
@@ -66,8 +66,28 @@ class JSON {
     }
 
     /**
+      * Returns a random Animal image of the type provided.
+      * @param {string} type - The Type of Animal. See https://weebyapi.xyz/api/docs#json for all the JSON endpoints.
+      * @returns {Promise<string>} The Formatted Animal Image URL.
+      */
+    async animalImage(type) {
+        if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+        if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of animal.")}`);
+
+        const { body } = await get(`${this.baseURL}/images/animal/${type}`)
+            .set("Authorization", `Bearer ${this.token}`)
+            .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
+
+        if (animalTypes.includes(type)) {
+            return body.url;
+        } else {
+            throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Animal you tried to request was not found. Make sure it is spelt correctly.")}`);
+        }
+    }
+
+    /**
       * Returns a random SFW Meme from a Subreddit.
-      * @param {('meme'|'memes'|'wholesomememes'|'dankmemes')} category - The name of the category.
+      * @param {MemeCategory} category - The name of the category.
       * @returns {Promise<MemeResponse>} The returned JSON object.
       */
     async meme(category) {
@@ -84,23 +104,22 @@ class JSON {
 
     /**
       * Formats the provided text into a different style.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The type of text formatter.
-      * @param {string} options.text - The text to format.
+      * @param {string} type - The type of text formatter.
+      * @param {string} text - The text to format.
       * @returns {Promise<string>} The response in a string.
       */
-    async textFormat(options = {}) {
-        if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
-        if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of Text Formatter Category.")}`);
-        if (typeof options.text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
-        if (!options.text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+    async textFormat({ type, text } = {}) {
+        if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+        if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of Text Formatter Category.")}`);
+        if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+        if (!text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
 
         const { body } = await get(`${this.baseURL}/format`)
-            .query({ type: options.type, text: options.text })
+            .query({ type: type, text: text })
             .set("Authorization", `Bearer ${this.token}`)
             .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
 
-        if (textFormatters.includes(options.type)) {
+        if (textFormatters.includes(type)) {
             return body.output;
         } else {
             throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text Formatter Category you tried to request was not found. Make sure it is spelt correctly.")}`);
@@ -184,4 +203,9 @@ module.exports = JSON;
 * @prop {number} score - The number of scores the post earned.
 * @prop {number} comments - The number of comments on the post.
 * @prop {number} awards - The number of awards given on the post.
+*/
+
+/**
+* All available Meme Categories:
+* @typedef {('meme'|'memes'|'wholesomememes'|'dankmemes')} MemeCategory
 */

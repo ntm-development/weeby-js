@@ -29,25 +29,22 @@ class Generators {
 
     /**
       * Draws one image on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options for the oneImage method.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
+      * @param {string} type - The Type of Generator.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async oneImage(options) {
+    async oneImage({ type, image } = {}) {
         try {
-            options = options || {};
-
-            if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+            if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
             if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
-            if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
-            if (!options.image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
 
-            if (oneImage.includes(options.type)) {
-                const { body } = await get(`${this.baseURL}/${options.type}`)
+            if (oneImage.includes(type)) {
+                const { body } = await get(`${this.baseURL}/${type}`)
                     .set("Authorization", `Bearer ${this.token}`)
                     .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                    .query({ image: options.image });
+                    .query({ image: image });
 
                 return body;
             } else {
@@ -370,6 +367,33 @@ class Generators {
     }
 
     /**
+      * Generates an Image, Text and Color on the This Is Spotify Meme. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
+      * @param {string} text - The text to print.
+      * @param {string} color - The hex color of the background.
+      * @returns {Promise<buffer>} The generated image in a buffer.
+      */
+    async thisIsSpotify({ image, text, color } = {}) {
+        try {
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+            if (typeof artist !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Color parameter is not a string.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide the link to an image.")}`);
+            if (!text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+            if (!color) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Color parameter is missing. You will need to provide a valid color hex.")}`);
+
+            const { body } = await get(`${this.baseURL}/thisisspotify`)
+                .set("Authorization", `Bearer ${this.token}`)
+                .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+                .query({ image: image, text: text, color: color });
+
+            return body;
+        } catch (e) {
+            throw new Error(e);
+        }
+    }
+
+    /**
       * Draws one image on an animated triggered GIF.
       * @param {string} image - The link to an image (.png, .jpg, .gif)
       * @param {boolean} [tint=true] - Whether the generated GIF should have a orange tint. Defaults to True.
@@ -444,17 +468,10 @@ module.exports = Generators;
 
 /**
 * All available Eject Outcomes:
-* * `ejected` - Whether the user was ejected.
-* * `imposter` - Whether the user was An imposter.
-* * `notimposter` - Whether the user was not An imposter.
 * @typedef {('ejected'|'imposter'|'notimposter')} EjectOutcomes
 */
 
 /**
 * All available currency types:
-* * `dollar` - $
-* * `euro` - €
-* * `pound` - £
-* * `yen` - ¥
 * @typedef {('dollar'|'euro'|'pound'|'yen')} CurrencyType
 */
