@@ -11,6 +11,115 @@ const textImage = require("../../assets/generators/textImage.json");
 * @class Generators
 */
 class Generators {
+    /**
+    * The options for one image generators.
+    * @typedef {Object} OneImageOptions
+    * @property {string} type - The type of generator.
+    * @property {string} image - The link to an image (.png, .jpg, .gif)
+    */
+
+    /**
+     * The options for two images generators.
+     * @typedef {Object} TwoImagesOptions
+     * @property {string} type - The type of generator.
+     * @property {string} firstImage - The link to the first image (.png, .jpg, .gif)
+     * @property {string} secondImage - The link to the second image (.png, .jpg, .gif)
+     */
+
+    /**
+     * The options for text generators.
+     * @typedef {Object} TextOptions
+     * @property {string} type - The type of generator.
+     * @property {string} text - The text to be displayed.
+     */
+
+    /**
+     * The options for two texts generators.
+     * @typedef {Object} TwoTextsOptions
+     * @property {string} type - The type of generator.
+     * @property {string} textOne - The first text to be displayed.
+     * @property {string} textTwo - The second text to be displayed.
+     */
+
+    /**
+     * The options for text image generators.
+     * @typedef {Object} TextImageOptions
+     * @property {string} type - The type of generator.
+     * @property {string} text - The text to be displayed.
+     * @property {string} image - The link to an image (.png, .jpg, .gif)
+     */
+
+    /**
+     * The options for the eject generator.
+     * @typedef {Object} EjectOptions
+     * @property {string} text - The text to be displayed.
+     * @property {string} image - The link to an image (.png, .jpg, .gif)
+     * @property {('ejected'|'imposter'|'notimposter')} outcome - The outcome of the generator.
+     */
+
+    /**
+     * The options for the friendship generator.
+     * @typedef {Object} FriendshipOptions
+     * @property {string} firstImage - The link to the first image (.png, .jpg, .gif)
+     * @property {string} secondImage - The link to the second image (.png, .jpg, .gif)
+     * @property {string} firstText - The first text to be displayed.
+     * @property {string} secondText - The second text to be displayed.
+     */
+
+    /**
+     * The options for the demotivational generator.
+     * @typedef {Object} DemotivationalOptions
+     * @property {string} text - The text to be displayed.
+     * @property {string} title - The title to be displayed.
+     * @property {string} image - The link to an image (.png, .jpg, .gif)
+     */
+
+    /**
+     * The options for the RIP generator.
+     * @typedef {Object} RIPOptions
+     * @property {string} text - The text to be displayed.
+     * @property {string} username - The username to be displayed.
+     * @property {string} image - The link to an image (.png, .jpg, .gif)
+     */
+
+    /**
+     * The options for the tweet generator.
+     * @typedef {Object} TweetOptions
+     * @property {string} username - The username to be displayed.
+     * @property {string} tweet - The tweet to be displayed.
+     * @property {string} avatar - The link to an image (.png, .jpg, .gif)
+     */
+
+    /**
+     * The options for the tweetfetch generator.
+     * @typedef {Object} TweetFetchOptions
+     * @property {string} username - The username to be displayed.
+     * @property {string} tweet - The tweet to be displayed.
+     */
+
+    /**
+     * The options for the spotify generator.
+     * @typedef {Object} SpotifyOptions
+     * @property {string} image - The link to an image (.png, .jpg, .gif)
+     * @property {string} songName - The name of the song to print.
+     * @property {string} artist - The artist name to print.
+     * @property {string} userPicks - The user's picks name to print.
+     */
+
+    /**
+     * The options for the triggered generator.
+     * @typedef {Object} TriggeredOptions
+     * @property {string} image - The link to an image (.png, .jpg, .gif)
+     * @property {boolean} [tint=true] - Whether the generated GIF should have a orange tint. Defaults to true.
+     */
+
+    /**
+     * The options for the currency generator.
+     * @typedef {Object} CurrencyOptions
+     * @property {('dollar'|'euro'|'pound'|'yen')} type - The type of currency.
+     * @property {number} amount - The amount of money to display.
+     */
+
     constructor(token, baseURL) {
         /**
          * Your Weeby API Token.
@@ -29,9 +138,7 @@ class Generators {
 
     /**
       * Draws one image on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
+      * @param {OneImageOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async oneImage(options = {}) {
@@ -58,10 +165,7 @@ class Generators {
 
     /**
       * Draws two images on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.firstImage - The link to the first image (.png, .jpg, .gif)
-      * @param {string} options.secondImage - The link to the second image (.png, .jpg, .gif)
+      * @param {TwoImagesOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async twoImages(options = {}) {
@@ -90,9 +194,7 @@ class Generators {
 
     /**
       * Prints text on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.text - The text to print.
+      * @param {TextOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async text(options = {}) {
@@ -119,10 +221,7 @@ class Generators {
 
     /**
       * Prints two texts on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.textOne - The first text to print.
-      * @param {string} options.textTwo - The second text to print.
+      * @param {TwoTextsOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async twoText(options = {}) {
@@ -151,10 +250,7 @@ class Generators {
 
     /**
       * Draws an image and text on a requested generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The type of Generator
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.text - The text to print.
+      * @param {TextImageOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async textImage(options = {}) {
@@ -181,10 +277,7 @@ class Generators {
 
     /**
       * Draws one image and one text on a Among Us Generator.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.text - The text to print.
-      * @param {('ejected'|'imposter'|'notimposter')} options.outcome - The type of outcome to display in the text.
+      * @param {EjectOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async eject(options = {}) {
@@ -209,11 +302,7 @@ class Generators {
 
     /**
       * Prints two images and texts on a friendship banner. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.firstImage - The link to the first image (.png, .jpg, .gif)
-      * @param {string} options.secondImage - The link to the second image (.png, .jpg, .gif)
-      * @param {string} options.firstText - The first text to print.
-      * @param {string} options.secondText - The second text to print.
+      * @param {FriendshipOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async friendship(options = {}) {
@@ -240,10 +329,7 @@ class Generators {
 
     /**
       * Draws an image, title and text on a demotivational poster. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.title - The title text to print.
-      * @param {string} options.text - The text to print.
+      * @param {DemotivationalOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async demotivational(options = {}) {
@@ -268,10 +354,7 @@ class Generators {
 
     /**
       * Draws a image, username and message on a Gravestone. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.username - The username to print.
-      * @param {string} options.message - The text to print.
+      * @param {RIPOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async rip(options = {}) {
@@ -296,10 +379,7 @@ class Generators {
 
     /**
       * Generates a raw twitter tweet with username, tweet text and avatar. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.username - The username to print.
-      * @param {string} options.tweet - The text to print.
-      * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
+      * @param {TweetOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async tweet(options = {}) {
@@ -324,9 +404,7 @@ class Generators {
 
     /**
       * Generates a twitter tweet with username (fetched from the Twitter API) and the tweet text. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.username - The username to print.
-      * @param {string} options.tweet - The text to print.
+      * @param {TweetFetchOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async tweetFetch(options = {}) {
@@ -349,11 +427,7 @@ class Generators {
 
     /**
       * Generates a Fake Spotify Now Playing Image. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.songName - The name of the song to print.
-      * @param {string} options.artist - The artist name to print.
-      * @param {string} options.userPicks - The user's picks name to print.
+      * @param {SpotifyOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async spotifyNp(options = {}) {
@@ -380,9 +454,7 @@ class Generators {
 
     /**
       * Draws one image on an animated triggered GIF.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {boolean} [options.tint=true] - Whether the generated GIF should have a orange tint. Defaults to True.
+      * @param {TriggeredOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async triggered(options = {}) {

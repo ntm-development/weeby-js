@@ -5,7 +5,7 @@ const { version } = require("../../package.json");
 /**
 * A list of available fonts.
 * Gotham, Stoneserif, Roboto, Arial, Impact, Riffic, Minecraft, Pinkycupid, Paladins, Pokemon, Oldenglish, Chalkduster, Akbar, Nexa, Verdana, Typewriter, Spongebob, Cornerofthesky
-* @typedef {String} Fonts
+* @typedef {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky')} Fonts
 */
 
 /**
