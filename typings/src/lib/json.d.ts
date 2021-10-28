@@ -45,7 +45,7 @@ declare class JSON {
     lyrics(query: string): Promise<lyricsResponse>;
     /**
       * Fetches Weeby API's current statistics.
-      * @returns {Promise<Object>} The statistics returned in a object.
+      * @returns {Promise<object>} The statistics returned in a object.
       */
     stats(): Promise<any>;
 }

@@ -25,24 +25,23 @@ class Overlays {
 
     /**
       * Draws one image on a requested image overlay. Please see https://weebyapi.xyz/api/docs#overlays for the available overlays.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Overlay.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
+      * @param {string} type - The Type of Overlay.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async fetch(options = {}) {
+    async fetch({ type, image }) {
         try {
-            if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
-            if (typeof options.image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
-            if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of overlay.")}`);
-            if (!options.image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of overlay.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
 
 
-            if (overlay.includes(options.type)) {
-                const { body } = await get(`${this.baseURL}/${options.type}`)
+            if (overlay.includes(type)) {
+                const { body } = await get(`${this.baseURL}/${type}`)
                     .set("Authorization", `Bearer ${this.token}`)
                     .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                    .query({ image: options.image });
+                    .query({ image: image });
 
                 return body;
             } else {

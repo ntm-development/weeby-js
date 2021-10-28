@@ -29,23 +29,22 @@ class Generators {
 
     /**
       * Draws one image on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
+      * @param {string} type - The Type of Generator.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async oneImage(options = {}) {
+    async oneImage({ type, image } = {}) {
         try {
-            if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
-            if (typeof options.image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
-            if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
-            if (!options.image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
 
-            if (oneImage.includes(options.type)) {
-                const { body } = await get(`${this.baseURL}/${options.type}`)
+            if (oneImage.includes(type)) {
+                const { body } = await get(`${this.baseURL}/${type}`)
                     .set("Authorization", `Bearer ${this.token}`)
                     .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                    .query({ image: options.image });
+                    .query({ image: image });
 
                 return body;
             } else {
@@ -58,26 +57,25 @@ class Generators {
 
     /**
       * Draws two images on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.firstImage - The link to the first image (.png, .jpg, .gif)
-      * @param {string} options.secondImage - The link to the second image (.png, .jpg, .gif)
+      * @param {string} type - The Type of Generator.
+      * @param {string} firstImage - The link to the first image (.png, .jpg, .gif)
+      * @param {string} secondImage - The link to the second image (.png, .jpg, .gif)
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async twoImages(options = {}) {
+    async twoImages({ type, firstImage, secondImage }) {
         try {
-            if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
-            if (typeof options.firstImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Image parameter is not a string.")}`);
-            if (typeof options.secondImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Image parameter is not a string.")}`);
-            if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
-            if (!options.firstImage) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Image parameter is missing. You will need to provide a valid image link.")}`);
-            if (!options.secondImage) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+            if (typeof firstImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Image parameter is not a string.")}`);
+            if (typeof secondImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Image parameter is not a string.")}`);
+            if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
+            if (!firstImage) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (!secondImage) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Image parameter is missing. You will need to provide a valid image link.")}`);
 
-            if (twoImages.includes(options.type)) {
-                const { body } = await get(`${this.baseURL}/${options.type}`)
+            if (twoImages.includes(type)) {
+                const { body } = await get(`${this.baseURL}/${type}`)
                     .set("Authorization", `Bearer ${this.token}`)
                     .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                    .query({ firstimage: options.firstImage, secondimage: options.secondImage });
+                    .query({ firstimage: firstImage, secondimage: secondImage });
 
                 return body;
             } else {
@@ -90,23 +88,22 @@ class Generators {
 
     /**
       * Prints text on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.text - The text to print.
+      * @param {string} type - The Type of Generator.
+      * @param {string} text - The text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async text(options = {}) {
+    async text({ type, text }) {
         try {
-            if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
-            if (typeof options.text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
-            if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
-            if (!options.text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+            if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+            if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+            if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
+            if (!text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
 
-            if (texts.includes(options.type)) {
-                const { body } = await get(`${this.baseURL}/${options.type}`)
+            if (texts.includes(type)) {
+                const { body } = await get(`${this.baseURL}/${type}`)
                     .set("Authorization", `Bearer ${this.token}`)
                     .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                    .query({ text: options.text });
+                    .query({ text: text });
 
                 return body;
             } else {
@@ -119,26 +116,25 @@ class Generators {
 
     /**
       * Prints two texts on a requested image generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The Type of Generator.
-      * @param {string} options.textOne - The first text to print.
-      * @param {string} options.textTwo - The second text to print.
+      * @param {string} type - The Type of Generator.
+      * @param {string} textOne - The first text to print.
+      * @param {string} textTwo - The second text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async twoText(options = {}) {
+    async twoText({ type, textOne, textTwo }) {
         try {
-            if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
-            if (typeof options.textOne !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Text parameter is not a string.")}`);
-            if (typeof options.textTwo !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Text parameter is not a string.")}`);
-            if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
-            if (!options.textOne) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Text parameter is missing. You will need to provide some text.")}`);
-            if (!options.textTwo) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Text parameter is missing. You will need to provide some text.")}`);
+            if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+            if (typeof textOne !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Text parameter is not a string.")}`);
+            if (typeof textTwo !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Text parameter is not a string.")}`);
+            if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
+            if (!textOne) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Text parameter is missing. You will need to provide some text.")}`);
+            if (!textTwo) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Text parameter is missing. You will need to provide some text.")}`);
 
-            if (twoTexts.includes(options.type)) {
-                const { body } = await get(`${this.baseURL}/${options.type}`)
+            if (twoTexts.includes(type)) {
+                const { body } = await get(`${this.baseURL}/${type}`)
                     .set("Authorization", `Bearer ${this.token}`)
                     .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                    .query({ textone: options.textOne, texttwo: options.textTwo });
+                    .query({ textone: textOne, texttwo: textTwo });
 
                 return body;
             } else {
@@ -151,24 +147,23 @@ class Generators {
 
     /**
       * Draws an image and text on a requested generator. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.type - The type of Generator
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.text - The text to print.
+      * @param {string} type - The type of Generator
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
+      * @param {string} text - The text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async textImage(options = {}) {
+    async textImage({ type, image, text }) {
         try {
-            if (typeof options.image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
-            if (typeof options.text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
-            if (!options.image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
-            if (!options.text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (!text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
 
-            if (textImage.includes(options.type)) {
-                const { body } = await get(`${this.baseURL}/${options.type}`)
+            if (textImage.includes(type)) {
+                const { body } = await get(`${this.baseURL}/${type}`)
                     .set("Authorization", `Bearer ${this.token}`)
                     .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                    .query({ image: options.image, text: options.text });
+                    .query({ image: image, text: text });
 
                 return body;
             } else {
@@ -181,25 +176,24 @@ class Generators {
 
     /**
       * Draws one image and one text on a Among Us Generator.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.text - The text to print.
-      * @param {('ejected'|'imposter'|'notimposter')} options.outcome - The type of outcome to display in the text.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
+      * @param {string} text - The text to print.
+      * @param {EjectOutcomes} outcome - The type of outcome to display in the text.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async eject(options = {}) {
+    async eject({ image, text, outcome }) {
         try {
-            if (typeof options.image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
-            if (!options.image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
-            if (typeof options.text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
-            if (!options.text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
-            if (typeof options.outcome !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Outcome parameter is not a string.")}`);
-            if (!options.outcome) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Outcome parameter is missing. You will need to provide some text.")}`);
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+            if (!text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+            if (typeof outcome !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Outcome parameter is not a string.")}`);
+            if (!outcome) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Outcome parameter is missing. You will need to provide some text.")}`);
 
             const { body } = await get(`${this.baseURL}/eject`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ image: options.image, text: options.text, outcome: options.outcome });
+                .query({ image: image, text: text, outcome: outcome });
 
             return body;
         } catch (e) {
@@ -209,28 +203,27 @@ class Generators {
 
     /**
       * Prints two images and texts on a friendship banner. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.firstImage - The link to the first image (.png, .jpg, .gif)
-      * @param {string} options.secondImage - The link to the second image (.png, .jpg, .gif)
-      * @param {string} options.firstText - The first text to print.
-      * @param {string} options.secondText - The second text to print.
+      * @param {string} firstImage - The link to the first image (.png, .jpg, .gif)
+      * @param {string} secondImage - The link to the second image (.png, .jpg, .gif)
+      * @param {string} firstText - The first text to print.
+      * @param {string} secondText - The second text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async friendship(options = {}) {
+    async friendship({ firstImage, secondImage, firstText, secondText }) {
         try {
-            if (typeof options.firstImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Image parameter is not a string.")}`);
-            if (typeof options.secondImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Image parameter is not a string.")}`);
-            if (typeof options.firstText !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Text parameter is not a string.")}`);
-            if (typeof options.secondText !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Text parameter is not a string.")}`);
-            if (!options.firstImage) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Image parameter is missing. You will need to provide a valid image link.")}`);
-            if (!options.secondImage) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Image parameter is missing. You will need to provide a valid image link.")}`);
-            if (!options.firstText) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Text parameter is missing. You will need to provide some text.")}`);
-            if (!options.secondText) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Text parameter is missing. You will need to provide some text.")}`);
+            if (typeof firstImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Image parameter is not a string.")}`);
+            if (typeof secondImage !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Image parameter is not a string.")}`);
+            if (typeof firstText !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The First Text parameter is not a string.")}`);
+            if (typeof secondText !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Second Text parameter is not a string.")}`);
+            if (!firstImage) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (!secondImage) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (!firstText) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("First Text parameter is missing. You will need to provide some text.")}`);
+            if (!secondText) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Second Text parameter is missing. You will need to provide some text.")}`);
 
             const { body } = await get(`${this.baseURL}/friendship`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ firstimage: options.firstImage, secondimage: options.secondImage, firsttext: options.firstText, secondtext: options.secondText });
+                .query({ firstimage: firstImage, secondimage: secondImage, firsttext: firstText, secondtext: secondText });
 
             return body;
         } catch (e) {
@@ -240,25 +233,24 @@ class Generators {
 
     /**
       * Draws an image, title and text on a demotivational poster. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.title - The title text to print.
-      * @param {string} options.text - The text to print.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
+      * @param {string} title - The title text to print.
+      * @param {string} text - The text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async demotivational(options = {}) {
+    async demotivational({ image, title, text }) {
         try {
-            if (typeof options.image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
-            if (typeof options.title !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Title parameter is not a string.")}`);
-            if (typeof options.text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
-            if (!options.image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
-            if (!options.title) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Title parameter is missing. You will need to provide some text.")}`);
-            if (!options.text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (typeof title !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Title parameter is not a string.")}`);
+            if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (!title) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Title parameter is missing. You will need to provide some text.")}`);
+            if (!text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
 
             const { body } = await get(`${this.baseURL}/demotivational`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ image: options.image, title: options.title, text: options.text });
+                .query({ image: image, title: title, text: text });
 
             return body;
         } catch (e) {
@@ -268,25 +260,24 @@ class Generators {
 
     /**
       * Draws a image, username and message on a Gravestone. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.username - The username to print.
-      * @param {string} options.message - The text to print.
+      * @param {string} avatar - The link to an image (.png, .jpg, .gif)
+      * @param {string} username - The username to print.
+      * @param {string} message - The text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async rip(options = {}) {
+    async rip({ avatar, username, message }) {
         try {
-            if (typeof options.avatar !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Avatar parameter is not a string.")}`);
-            if (typeof options.username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
-            if (typeof options.message !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Message parameter is not a string.")}`);
-            if (!options.avatar) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Avatar parameter is missing. You will need to provide a valid image link.")}`);
-            if (!options.username) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
-            if (!options.message) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Message parameter is missing. You will need to provide some text.")}`);
+            if (typeof avatar !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Avatar parameter is not a string.")}`);
+            if (typeof username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
+            if (typeof message !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Message parameter is not a string.")}`);
+            if (!avatar) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Avatar parameter is missing. You will need to provide a valid image link.")}`);
+            if (!username) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
+            if (!message) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Message parameter is missing. You will need to provide some text.")}`);
 
             const { body } = await get(`${this.baseURL}/rip`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ avatar: options.avatar, username: options.username, message: options.message });
+                .query({ avatar: avatar, username: username, message: message });
 
             return body;
         } catch (e) {
@@ -296,25 +287,24 @@ class Generators {
 
     /**
       * Generates a raw twitter tweet with username, tweet text and avatar. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.username - The username to print.
-      * @param {string} options.tweet - The text to print.
-      * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
+      * @param {string} username - The username to print.
+      * @param {string} tweet - The text to print.
+      * @param {string} avatar - The link to an image (.png, .jpg, .gif)
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async tweet(options = {}) {
+    async tweet({ username, tweet, avatar }) {
         try {
-            if (typeof options.username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
-            if (typeof options.tweet !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Tweet parameter is not a string.")}`);
-            if (typeof options.avatar !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Avatar parameter is not a string.")}`);
-            if (!options.username) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
-            if (!options.tweet) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Tweet parameter is missing. You will need to provide some text.")}`);
-            if (!options.avatar) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Avatar parameter is missing. You will need to provide a valid image link.")}`);
+            if (typeof username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
+            if (typeof tweet !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Tweet parameter is not a string.")}`);
+            if (typeof avatar !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Avatar parameter is not a string.")}`);
+            if (!username) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
+            if (!tweet) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Tweet parameter is missing. You will need to provide some text.")}`);
+            if (!avatar) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Avatar parameter is missing. You will need to provide a valid image link.")}`);
 
             const { body } = await get(`${this.baseURL}/tweet`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ username: options.username, tweet: options.tweet, avatar: options.avatar });
+                .query({ username: username, tweet: tweet, avatar: avatar });
 
             return body;
         } catch (e) {
@@ -324,22 +314,21 @@ class Generators {
 
     /**
       * Generates a twitter tweet with username (fetched from the Twitter API) and the tweet text. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.username - The username to print.
-      * @param {string} options.tweet - The text to print.
+      * @param {string} username - The username to print.
+      * @param {string} tweet - The text to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async tweetFetch(options = {}) {
+    async tweetFetch({ username, tweet }) {
         try {
-            if (typeof options.username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
-            if (typeof options.tweet !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Tweet parameter is not a string.")}`);
-            if (!options.username) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
-            if (!options.tweet) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Tweet parameter is missing. You will need to provide some text.")}`);
+            if (typeof username !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Username parameter is not a string.")}`);
+            if (typeof tweet !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Tweet parameter is not a string.")}`);
+            if (!username) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Username parameter is missing. You will need to provide some text.")}`);
+            if (!tweet) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Tweet parameter is missing. You will need to provide some text.")}`);
 
             const { body } = await get(`${this.baseURL}/tweetfetch`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ username: options.username, tweet: options.tweet });
+                .query({ username: username, tweet: tweet });
 
             return body;
         } catch (e) {
@@ -349,28 +338,54 @@ class Generators {
 
     /**
       * Generates a Fake Spotify Now Playing Image. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.songName - The name of the song to print.
-      * @param {string} options.artist - The artist name to print.
-      * @param {string} options.userPicks - The user's picks name to print.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
+      * @param {string} title - The name of the song to print.
+      * @param {string} artist - The artist name to print.
+      * @param {string} album - The album name to print.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async spotifyNp(options = {}) {
+    async spotifyNp({ image, title, artist, album }) {
         try {
-            if (typeof options.image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
-            if (typeof options.songName !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Song Name parameter is not a string.")}`);
-            if (typeof options.artist !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Artist parameter is not a string.")}`);
-            if (typeof options.userPicks !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The User Picks parameter is not a string.")}`);
-            if (!options.image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide some text.")}`);
-            if (!options.songName) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Song Name parameter is missing. You will need to provide some text.")}`);
-            if (!options.artist) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Artist parameter is missing. You will need to provide some text.")}`);
-            if (!options.userPicks) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("User Picks parameter is missing. You will need to provide some text.")}`);
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (typeof title !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Title parameter is not a string.")}`);
+            if (typeof artist !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Artist parameter is not a string.")}`);
+            if (typeof album !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Album parameter is not a string.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide the link to an image.")}`);
+            if (!title) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Title parameter is missing. You will need to provide some text.")}`);
+            if (!artist) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Artist parameter is missing. You will need to provide some text.")}`);
+            if (!album) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Album parameter is missing. You will need to provide some text.")}`);
 
             const { body } = await get(`${this.baseURL}/spotifynp`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ image: options.image, songname: options.songName, artist: options.artist, userpicks: options.userPicks });
+                .query({ image: image, title: title, artist: artist, album: album });
+
+            return body;
+        } catch (e) {
+            throw new Error(e);
+        }
+    }
+
+    /**
+      * Generates an Image, Text and Color on the This Is Spotify Meme. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
+      * @param {string} text - The text to print.
+      * @param {string} color - The hex color of the background.
+      * @returns {Promise<buffer>} The generated image in a buffer.
+      */
+    async thisIsSpotify({ image, text, color } = {}) {
+        try {
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
+            if (typeof artist !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Color parameter is not a string.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide the link to an image.")}`);
+            if (!text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+            if (!color) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Color parameter is missing. You will need to provide a valid color hex.")}`);
+
+            const { body } = await get(`${this.baseURL}/thisisspotify`)
+                .set("Authorization", `Bearer ${this.token}`)
+                .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
+                .query({ image: image, text: text, color: color });
 
             return body;
         } catch (e) {
@@ -380,22 +395,21 @@ class Generators {
 
     /**
       * Draws one image on an animated triggered GIF.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.image - The link to an image (.png, .jpg, .gif)
-      * @param {boolean} [options.tint=true] - Whether the generated GIF should have a orange tint. Defaults to True.
+      * @param {string} image - The link to an image (.png, .jpg, .gif)
+      * @param {boolean} [tint=true] - Whether the generated GIF should have a orange tint. Defaults to True.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async triggered(options = {}) {
+    async triggered({ image, tint = true }) {
         try {
-            if (typeof options.image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
-            if (!options.image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
+            if (typeof image !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Image parameter is not a string.")}`);
+            if (!image) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Image parameter is missing. You will need to provide a valid image link.")}`);
 
-            const tint = options.tint ? options.tint : "";
+            const tintBool = tint ? tint : "";
 
             const { body } = await get(`${this.baseURL}/triggered`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ image: options.image, tint: tint });
+                .query({ image: image, tint: tintBool });
 
             return body;
         } catch (e) {
@@ -406,21 +420,21 @@ class Generators {
     /**
       * Generates a image with the specified currency and its amount.
       * @param {Object} options - The options that contain the required parameters.
-      * @param {('dollar'|'euro'|'pound'|'yen')} options.type - The type of currency.
-      * @param {number} options.amount - The amount of money to display.
+      * @param {CurrencyType} type - The type of currency.
+      * @param {number} amount - The amount of money to display.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    async currency(options = {}) {
+    async currency({ type, amount }) {
         try {
-            if (typeof options.type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
-            if (typeof options.amount !== "number") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Amount query is not a string.")}`);
-            if (!options.type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
-            if (!options.amount) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Amount parameter is missing. You will need to provide a number.")}`);
+            if (typeof type !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Type parameter is not a string.")}`);
+            if (typeof amount !== "number") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Amount query is not a string.")}`);
+            if (!type) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Type parameter is missing. You will need to provide the type of generator.")}`);
+            if (!amount) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Amount parameter is missing. You will need to provide a number.")}`);
 
             const { body } = await get(`${this.baseURL}/currency`)
                 .set("Authorization", `Bearer ${this.token}`)
                 .set("User-Agent", `Weeby-JS by NTM Development » v${version}`)
-                .query({ type: options.type, amount: options.amount });
+                .query({ type: type, amount: amount });
 
             return body;
         } catch (e) {
@@ -451,3 +465,13 @@ class Generators {
 }
 
 module.exports = Generators;
+
+/**
+* All available Eject Outcomes:
+* @typedef {('ejected'|'imposter'|'notimposter')} EjectOutcomes
+*/
+
+/**
+* All available currency types:
+* @typedef {('dollar'|'euro'|'pound'|'yen')} CurrencyType
+*/

@@ -8,7 +8,7 @@ I strongly discourage using this code as it is not v13 compatible and uses norma
 const { stripIndents } = require("common-tags");
 const { Client, MessageEmbed } = require("discord.js");
 require("dotenv").config();
-const WeebyAPI = require("../index"); // Change this to: require("weeby-js");
+const WeebyAPI = require("../src/index"); // Change this to: require("weeby-js");
 const weeby = new WeebyAPI(process.env.WEEBYAPI);
 
 const client = new Client({
@@ -182,7 +182,7 @@ client.on("message", async message => {
     }
 
     if (cmd === "currency") {
-        const image = await weeby.generators.currency({ type: "dollar", amount: 50000 });
+        const image = await weeby.generators.currency({ type: , amount: 50000 });
 
         const embed = new MessageEmbed()
             .setTitle(`**Color**`)

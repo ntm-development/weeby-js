@@ -6,7 +6,7 @@ const JSON = require("./lib/json");
 const Custom = require("./lib/custom");
 const Effects = require("./lib/effects");
 const Utility = require("./lib/utility");
-const { version } = require("./package.json");
+const { version } = require("../package.json");
 
 /**
 * Weeby-JS - The official JavaScript wrapper for Weeby API, developed by NTM Development. Click [here](https://weebyapi.xyz/) for the website.
