@@ -3,9 +3,67 @@ const chalk = require("chalk");
 const { version } = require("../../package.json");
 
 /**
+* A list of available fonts.
+* Gotham, Stoneserif, Roboto, Arial, Impact, Riffic, Minecraft, Pinkycupid, Paladins, Pokemon, Oldenglish, Chalkduster, Akbar, Nexa, Verdana, Typewriter, Spongebob, Cornerofthesky
+* @typedef {String} Fonts
+*/
+
+/**
 * @class Custom
 */
 class Custom {
+    /**
+     * Options for creating a customisable greeting image.
+     * @typedef {Object} GreetingOptions
+     * @property {String} icon - The link to an image (.png, .jpg, .gif)
+     * @property {String} background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
+     * @property {String} name - The name of the greeted user.
+     * @property {String} greet - What should the user be greeted with?
+     * @property {String} [message] - Provide a message on the bottom of the user's name.
+     * @property {String} [greetHex] - The color of the greeting text.
+     * @property {String} [nameHex] - The color of the name text.
+     * @property {String} [circleHex] - The color of the circle.
+     * @property {String} [messageHex] - The color of the message text.
+     * @property {Fonts} [font] - The font of the text.
+     */
+
+    /**
+     * Options for creating a booster image.
+     * @typedef {Object} BoosterOptions
+     * @property {String} icon - The link to an image (.png, .jpg, .gif)
+     * @property {String} background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
+     * @property {String} name - The name of the user who boosted the server.
+     * @property {String} title - The title of the booster card.
+     * @property {String} [message] - Provide a message on the bottom of the title.
+     * @property {String} [greetHex] - The color of the greeting text.
+     * @property {String} [nameHex] - The color of the name text.
+     * @property {String} [circleHex] - The color of the circle.
+     * @property {String} [messageHex] - The color of the message text.
+     * @property {Fonts} [font] - The font of the text.
+     */
+
+    /**
+     * Options for creating a rank card.
+     * @typedef {Object} RankOptions
+     * @property {string} avatar - The link to an image (.png, .jpg, .gif)
+     * @property {string} username - The username to print.
+     * @property {string} bgColor - The color of the background.
+     * @property {number} level - The Level the user is currently on.
+     * @property {number} xp - How much XP the user has.
+     * @property {Fonts} [font] - The font of the text.
+     */
+
+    /**
+     * Options for creating a level up card.
+     * @typedef {Object} LevelUpOptions
+     * @property {string} avatar - The link to an image (.png, .jpg, .gif)
+     * @property {string} bgColor - The color of the background. (Do not include the hashtag).
+     * @property {string} borderColor - The color of the avatar border. (Do not include the hashtag).
+     * @property {number} oldlevel - The old level of the user.
+     * @property {number} newlevel - The new level of the user.
+     * @property {Fonts} [font] - The font of the text.
+     */
+
     constructor(token, baseURL) {
         /**
          * Your Weeby API Token.
@@ -23,18 +81,8 @@ class Custom {
     }
 
     /**
-      * Creates a customisable greeting image with Icon, Name, Greet and Background. Optional parameters can let you customise the color of each element, or let you add a message.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.icon - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
-      * @param {string} options.name - The name of the greeted user.
-      * @param {string} options.greet - What should the user be greeted with?
-      * @param {string} [options.message] - Provide a message on the bottom of the user's name.
-      * @param {string} [options.greetHex=000000] - The color of the greet text. (Do not include the hashtag).
-      * @param {string} [options.nameHex=000000] - The color of the name text. (Do not include the hashtag).
-      * @param {string} [options.circleHex=000000] - The color of the avatar border. (Do not include the hashtag).
-      * @param {string} [options.messageHex=000000] - The color of the message text. (Do not include the hashtag).
-      * @param {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky')} [options.font=gotham] - The font to use, 'gotham' by default.
+      * Creates a customisable greeting image. Optional parameters can let you customise the color of each element, or let you add a message.
+      * @param {GreetingOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async greeting(options = {}) {
@@ -63,18 +111,8 @@ class Custom {
     }
 
     /**
-      * Creates a customisable booster add/remove image with Icon, Name and Background. Optional queries can let you customise the color of each element.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.icon - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
-      * @param {string} options.name - The name of the user who boosted the server.
-      * @param {string} options.title - The title of the booster card.
-      * @param {string} [options.message] - Provide a message on the bottom of title.
-      * @param {string} [options.titleHex =f47fff] - The color of the title text. (Do not include the hashtag).
-      * @param {string} [options.nameHex=FFFFFF] - The color of the name text. (Do not include the hashtag).
-      * @param {string} [options.circleHex=9f50a7] - The color of the avatar border. (Do not include the hashtag).
-      * @param {string} [options.messageHex=9f50a7] - The color of the message text. (Do not include the hashtag).
-      * @param {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky')} [options.font=nexa] - The font to use, 'nexa' by default.
+      * Creates a customisable booster add/remove image. Optional queries can let you customise the color of each element.
+      * @param {BoosterOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async booster(options = {}) {
@@ -104,12 +142,7 @@ class Custom {
 
     /**
       * Creates a customisable rank card with Icon, Name, and leveling stats.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.username - The username to print.
-      * @param {string} options.bgColor - The color of the background.
-      * @param {number} options.level - The Level the user is currently on.
-      * @param {number} options.xp - How much XP the user has.
+      * @param {RankOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async rank(options = {}) {
@@ -134,13 +167,7 @@ class Custom {
 
     /**
       * Creates a customisable level up card.
-      * @param {Object} options - The options that contain the required parameters.
-      * @param {string} options.avatar - The link to an image (.png, .jpg, .gif)
-      * @param {string} options.bgColor - The color of the background. (Do not include the hashtag).
-      * @param {string} options.borderColor - The color of the avatar border. (Do not include the hashtag).
-      * @param {number} options.oldlevel - The old level of the user.
-      * @param {number} options.newlevel - The new level of the user.
-      * @param {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky')} [options.font=nexa] - The font to use, 'nexa' by default.
+      * @param {LevelUpOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async levelUp(options = {}) {
