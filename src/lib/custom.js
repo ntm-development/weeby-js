@@ -6,57 +6,6 @@ const { version } = require("../../package.json");
 * @class Custom
 */
 class Custom {
-    /**
-     * Options for creating a customisable greeting image.
-     * @typedef {Object} GreetingOptions
-     * @param {string} icon - The link to an image (.png, .jpg, .gif)
-     * @param {string} background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
-     * @param {string} name - The name of the greeted user.
-     * @param {string} greet - What should the user be greeted with?
-     * @param {string} [message] - Provide a message on the bottom of the user's name.
-     * @param {string} [greetHex=000000] - The color of the greet text.
-     * @param {string} [nameHex=000000] - The color of the name text.
-     * @param {string} [circleHex=000000] - The color of the avatar border.
-     * @param {string} [messageHex=000000] - The color of the message text.
-     * @param {FontType} [font=gotham] - The font to use, 'gotham' by default.
-     */
-
-    /**
-     * Options for creating a booster image.
-     * @typedef {Object} BoosterOptions
-      * @property {string} icon - The link to an image (.png, .jpg, .gif)
-      * @property {string} background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
-      * @property {string} name - The name of the user who boosted the server.
-      * @property {string} title - The title of the booster card.
-      * @property {string} [message] - Provide a message on the bottom of title.
-      * @property {string} [titleHex =f47fff] - The color of the title text. (Do not include the hashtag).
-      * @property {string} [nameHex=FFFFFF] - The color of the name text. (Do not include the hashtag).
-      * @property {string} [circleHex=9f50a7] - The color of the avatar border. (Do not include the hashtag).
-      * @property {string} [messageHex=9f50a7] - The color of the message text. (Do not include the hashtag).
-      * @property {FontType} [font=nexa] - The font to use, 'nexa' by default.
-     */
-
-    /**
-     * Options for creating a rank card.
-     * @typedef {Object} RankOptions
-     * @property {string} avatar - The link to an image (.png, .jpg, .gif)
-     * @property {string} username - The username to print.
-     * @property {string} bgColor - The color of the background.
-     * @property {number} level - The level the user is currently on.
-     * @property {number} xp - How much XP the user has.
-     */
-
-    /**
-     * Options for creating a level up card.
-     * @typedef {Object} LevelUpOptions
-     * @property {string} avatar - The link to an image (.png, .jpg, .gif)
-     * @property {string} bgColor - The color of the background. (Do not include the hashtag).
-     * @property {string} borderColor - The color of the avatar border. (Do not include the hashtag).
-     * @property {number} oldlevel - The old level of the user.
-     * @property {number} newlevel - The new level of the user.
-     * @property {FontType} [font=nexa] - The font to use, 'nexa' by default.
-     */
-
     constructor(token, baseURL) {
         /**
          * Your Weeby API Token.
@@ -189,24 +138,75 @@ class Custom {
 module.exports = Custom;
 
 /**
-* A list of all available fonts
-* * Gotham
-* * Stoneserif
-* * Roboto
-* * Arial
-* * Impact
-* * Riffic
-* * Minecraft
-* * Pinkycupid
-* * Paladins
-* * Pokemon
-* * Oldenglish
-* * Chalkduster
-* * Akbar
-* * Nexa
-* * Verdana
-* * Typewriter
-* * Spongebob
-* * Cornerofthesky
-* @typedef {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky'|'breesh')} FontType
-*/
+ * A list of all available fonts
+ * * Gotham
+ * * Stoneserif
+ * * Roboto
+ * * Arial
+ * * Impact
+ * * Riffic
+ * * Minecraft
+ * * Pinkycupid
+ * * Paladins
+ * * Pokemon
+ * * Oldenglish
+ * * Chalkduster
+ * * Akbar
+ * * Nexa
+ * * Verdana
+ * * Typewriter
+ * * Spongebob
+ * * Cornerofthesky
+ * @typedef {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky'|'breesh')} FontType
+ */
+
+/**
+ * Options for creating a customisable greeting image.
+ * @typedef {Object} GreetingOptions
+ * @param {string} icon - The link to an image (.png, .jpg, .gif)
+ * @param {string} background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
+ * @param {string} name - The name of the greeted user.
+ * @param {string} greet - What should the user be greeted with?
+ * @param {string} [message] - Provide a message on the bottom of the user's name.
+ * @param {string} [greetHex=000000] - The color of the greet text.
+ * @param {string} [nameHex=000000] - The color of the name text.
+ * @param {string} [circleHex=000000] - The color of the avatar border.
+ * @param {string} [messageHex=000000] - The color of the message text.
+ * @param {FontType} [font=gotham] - The font to use, 'gotham' by default.
+ */
+
+/**
+ * Options for creating a booster image.
+ * @typedef {Object} BoosterOptions
+ * @property {string} icon - The link to an image (.png, .jpg, .gif)
+ * @property {string} background - The link to an image (.png, .jpg, .gif) (1024x470 recommended)
+ * @property {string} name - The name of the user who boosted the server.
+ * @property {string} title - The title of the booster card.
+ * @property {string} [message] - Provide a message on the bottom of title.
+ * @property {string} [titleHex =f47fff] - The color of the title text. (Do not include the hashtag).
+ * @property {string} [nameHex=FFFFFF] - The color of the name text. (Do not include the hashtag).
+ * @property {string} [circleHex=9f50a7] - The color of the avatar border. (Do not include the hashtag).
+ * @property {string} [messageHex=9f50a7] - The color of the message text. (Do not include the hashtag).
+ * @property {FontType} [font=nexa] - The font to use, 'nexa' by default.
+ */
+
+/**
+ * Options for creating a rank card.
+ * @typedef {Object} RankOptions
+ * @property {string} avatar - The link to an image (.png, .jpg, .gif)
+ * @property {string} username - The username to print.
+ * @property {string} bgColor - The color of the background.
+ * @property {number} level - The level the user is currently on.
+ * @property {number} xp - How much XP the user has.
+ */
+
+/**
+ * Options for creating a level up card.
+ * @typedef {Object} LevelUpOptions
+ * @property {string} avatar - The link to an image (.png, .jpg, .gif)
+ * @property {string} bgColor - The color of the background. (Do not include the hashtag).
+ * @property {string} borderColor - The color of the avatar border. (Do not include the hashtag).
+ * @property {number} oldlevel - The old level of the user.
+ * @property {number} newlevel - The new level of the user.
+ * @property {FontType} [font=nexa] - The font to use, 'nexa' by default.
+ */
