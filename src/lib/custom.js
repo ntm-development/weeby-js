@@ -138,29 +138,6 @@ class Custom {
 module.exports = Custom;
 
 /**
- * A list of all available fonts
- * * Gotham
- * * Stoneserif
- * * Roboto
- * * Arial
- * * Impact
- * * Riffic
- * * Minecraft
- * * Pinkycupid
- * * Paladins
- * * Pokemon
- * * Oldenglish
- * * Chalkduster
- * * Akbar
- * * Nexa
- * * Verdana
- * * Typewriter
- * * Spongebob
- * * Cornerofthesky
- * @typedef {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky'|'breesh')} FontType
- */
-
-/**
  * Options for creating a customisable greeting image.
  * @typedef {Object} GreetingOptions
  * @param {string} icon - The link to an image (.png, .jpg, .gif)
