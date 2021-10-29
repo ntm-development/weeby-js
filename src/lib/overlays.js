@@ -25,8 +25,7 @@ class Overlays {
 
     /**
       * Draws one image on a requested image overlay. Please see https://weebyapi.xyz/api/docs#overlays for the available overlays.
-      * @param {string} type - The Type of Overlay.
-      * @param {string} image - The link to an image (.png, .jpg, .gif)
+      * @param {OverlaysOptions} options The options for the request
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async fetch({ type, image }) {
@@ -54,3 +53,9 @@ class Overlays {
 }
 
 module.exports = Overlays;
+
+/**
+ * @typedef {Object} OverlaysOptions
+ * @property {string} type - The type of overlay.
+ * @property {string} image - The link to an image (.png, .jpg, .gif)
+ */
