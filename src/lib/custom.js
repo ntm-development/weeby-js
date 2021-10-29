@@ -160,10 +160,10 @@ module.exports = Custom;
  * @property {string} name - The name of the user who boosted the server.
  * @property {string} title - The title of the booster card.
  * @property {string} [message] - Provide a message on the bottom of title.
- * @property {string} [titleHex =f47fff] - The color of the title text. (Do not include the hashtag).
- * @property {string} [nameHex=FFFFFF] - The color of the name text. (Do not include the hashtag).
- * @property {string} [circleHex=9f50a7] - The color of the avatar border. (Do not include the hashtag).
- * @property {string} [messageHex=9f50a7] - The color of the message text. (Do not include the hashtag).
+ * @property {string} [titleHex ='F47FFF'] - The color of the title text. (Do not include the hashtag).
+ * @property {string} [nameHex='FFFFFF'] - The color of the name text. (Do not include the hashtag).
+ * @property {string} [circleHex='9F50A7'] - The color of the avatar border. (Do not include the hashtag).
+ * @property {string} [messageHex='9F50A7'] - The color of the message text. (Do not include the hashtag).
  * @property {FontType} [font=nexa] - The font to use, 'nexa' by default.
  */
 

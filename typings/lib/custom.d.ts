@@ -82,11 +82,11 @@ type BoosterOptions = {
      */
     nameHex?: string;
     /**
-     * f50a7] - The color of the avatar border. (Do not include the hashtag).
+     * - The color of the avatar border. (Do not include the hashtag).
      */
     circleHex?: string;
     /**
-     * f50a7] - The color of the message text. (Do not include the hashtag).
+     * - The color of the message text. (Do not include the hashtag).
      */
     messageHex?: string;
     /**
