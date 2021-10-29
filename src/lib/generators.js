@@ -345,9 +345,7 @@ class Generators {
 
     /**
       * Generates an Image, Text and Color on the This Is Spotify Meme. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
-      * @param {string} image - The link to an image (.png, .jpg, .gif)
-      * @param {string} text - The text to print.
-      * @param {string} color - The hex color of the background.
+      * @param {ThisIsSpotifyOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
     async thisIsSpotify({ image, text, color } = {}) {
@@ -518,7 +516,7 @@ module.exports = Generators;
  * @typedef {Object} RIPOptions
  * @property {string} message - The text to be displayed.
  * @property {string} username - The username to be displayed.
- * @property {string} image - The link to an image (.png, .jpg, .gif)
+ * @property {string} avatar - The link to an image (.png, .jpg, .gif)
  */
 
 /**
@@ -539,10 +537,10 @@ module.exports = Generators;
 /**
  * The options for the spotify generator.
  * @typedef {Object} SpotifyOptions
- * @param {string} image - The link to an image (.png, .jpg, .gif)
- * @param {string} title - The name of the song to be displayed.
- * @param {string} artist - The artist name to be displayed.
- * @param {string} album - The album name to be displayed.
+ * @property {string} image - The link to an image (.png, .jpg, .gif)
+ * @property {string} title - The name of the song to be displayed.
+ * @property {string} artist - The artist name to be displayed.
+ * @property {string} album - The album name to be displayed.
  */
 
 /**
@@ -550,6 +548,14 @@ module.exports = Generators;
  * @typedef {Object} TriggeredOptions
  * @property {string} image - The link to an image (.png, .jpg, .gif)
  * @property {boolean} [tint=true] - Whether the generated GIF should have a orange tint. Defaults to true.
+ */
+
+/**
+ * The options for the this is spotify generator.
+ * @typedef {Object} ThisIsSpotifyOptions
+ * @property {string} image - The link to an image (.png, .jpg, .gif)
+ * @property {string} text - The text to print.
+ * @property {string} color - The hex color of the background.
  */
 
 /**
