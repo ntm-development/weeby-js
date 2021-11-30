@@ -24,8 +24,7 @@ class Utility {
 
     /**
      * Checks if a user has voted for a bot on Top.gg
-     * @param {string} botID - The ID of the Bot.
-     * @param {string} userID - The ID of the User.
+     * @param {TopGGVoteCheckerOptions} options - The options you want to use.
      * @returns {Promise<TopGGVoteCheckerResponse>}
      */
     async topGGVoteChecker({ botID, userID }) {
@@ -48,9 +47,7 @@ class Utility {
 
     /**
      * Converts the provided currency to a different currency.
-     * @param {string} from - A valid ISO 4217 code of the currency (i.e. USD). Refer to this: https://www.xe.com/iso4217.php
-     * @param {string} to - A valid ISO 4217 code of the currency (i.e. USD). Refer to this: https://www.xe.com/iso4217.php
-     * @param {number} amount - The amount you want to have converted.
+     * @param {CurrencyConverterOptions} options - The options you want to use.
      * @returns {Promise<CurrencyConverterResponse>}
      */
     async currencyConverter({ from, to, amount } = {}) {
@@ -75,9 +72,7 @@ class Utility {
 
     /**
      * Translate the provided text to another language.
-     * @param {string} from - A valid ISO language code. Refer to this: http://www.lingoes.net/en/translator/langcode.htm
-     * @param {string} to - A valid ISO language code. Refer to this: http://www.lingoes.net/en/translator/langcode.htm
-     * @param {number} text - The text to translate.
+     * @param {TranslatorOptions} options - The options you want to use.
      * @returns {Promise<TranslateResponse>}
      */
     async translate({ from, to, text } = {}) {
@@ -102,8 +97,7 @@ class Utility {
 
     /**
      * Returns the weather for the provided location.
-     * @param {string} location - The location you want to get the weather for.
-     * @param {string} degreeType - The degree type you want to get the weather in.
+     * @param {WeatherOptions} options - The options you want to use.
      * @returns {Promise<WeatherResponse>}
      */
     async weather({ location, degreeType } = {}) {
@@ -128,6 +122,12 @@ class Utility {
 module.exports = Utility;
 
 /**
+ * @typedef {Object} TopGGVoteCheckerOptions - The options for the TopGGVoteChecker.
+ * @property {string} botID - The ID of the bot you want to check.
+ * @property {string} userID - The ID of the user you want to check.
+ */
+
+/**
  * @typedef {Object} TopGGVoteCheckerResponse - The response from the Top.gg Vote Checker method.
  * @property {string} userID - The ID of the user.
  * @property {string} botID - The ID of the bot.
@@ -139,38 +139,58 @@ module.exports = Utility;
  */
 
 /**
+ * @typedef {Object} TranslateOptions - The options for the Translate method.
+ * @property {string} from - A valid ISO language code. Refer to this: http://www.lingoes.net/en/translator/langcode.htm
+ * @property {string} to - A valid ISO language code. Refer to this: http://www.lingoes.net/en/translator/langcode.htm
+ * @property {number} text - The text to translate.
+ */
+
+/**
  * @typedef {Object} TranslateResponse - The response of the translate method.
- * @prop {Object} from - The language the text was translated from.
- * @prop {string} from.language - The language code.
- * @prop {string} from.text - The text before translation.
- * @prop {Object} to - The language the text was translated to.
- * @prop {string} to.language - The language code.
- * @prop {string} to.text - The text that was translated.
+ * @property {Object} from - The language the text was translated from.
+ * @property {string} from.language - The language code.
+ * @property {string} from.text - The text before translation.
+ * @property {Object} to - The language the text was translated to.
+ * @property {string} to.language - The language code.
+ * @property {string} to.text - The text that was translated.
+ */
+
+/**
+ * @typedef {Object} CurrencyConverterOptions - The options for the Currency Converter.
+ * @property {string} from - A valid ISO 4217 code of the currency (i.e. USD). Refer to this: https://www.xe.com/iso4217.php
+ * @property {string} to - A valid ISO 4217 code of the currency (i.e. USD). Refer to this: https://www.xe.com/iso4217.php
+ * @property {number} amount - The amount you want to have converted.
  */
 
 /**
  * @typedef {Object} CurrencyConverterResponse - The response of the currency converter method.
- * @prop {Object} from - The language the text was translated from.
- * @prop {string} from.type - The currency type the amount was converted from.
- * @prop {string} from.amount - The currency amount before conversion.
- * @prop {Object} to - The language the text was translated to.
- * @prop {string} to.type - The currency type the amount was converted to.
- * @prop {string} to.amount - The currency amount after conversion.
+ * @property {Object} from - The language the text was translated from.
+ * @property {string} from.type - The currency type the amount was converted from.
+ * @property {string} from.amount - The currency amount before conversion.
+ * @property {Object} to - The language the text was translated to.
+ * @property {string} to.type - The currency type the amount was converted to.
+ * @property {string} to.amount - The currency amount after conversion.
+ */
+
+/**
+ * @typedef {Object} WeatherOptions - The options for the Weather method.
+ * @param {string} location - The location you want to get the weather for.
+ * @param {string} degreeType - The degree type you want to get the weather in.
  */
 
 /**
  * @typedef {Object} WeatherResponse - The response for the Weather method.
- * @prop {string} observationPoint - The location being observed.
- * @prop {string} conditions - The current conditions.
- * @prop {string} conditionsImageURL - The URL for the current conditions image.
- * @prop {string} degreeType - The degree type being used.
- * @prop {string} temperature - The current temperature.
- * @prop {string} feelsLike - The current feels like temperature.
- * @prop {string} windSpeed - The current wind speed, in km/h.
- * @prop {string} windDisplay - The current wind display, in km/h.
- * @prop {string} humidity - The current humidity.
- * @prop {string} day - Today's day.
- * @prop {string} date - Today's date.
- * @prop {string} latitude - The latitude of the location.
- * @prop {string} longitude - The longitude of the location.
+ * @property {string} observationPoint - The location being observed.
+ * @property {string} conditions - The current conditions.
+ * @property {string} conditionsImageURL - The URL for the current conditions image.
+ * @property {string} degreeType - The degree type being used.
+ * @property {string} temperature - The current temperature.
+ * @property {string} feelsLike - The current feels like temperature.
+ * @property {string} windSpeed - The current wind speed, in km/h.
+ * @property {string} windDisplay - The current wind display, in km/h.
+ * @property {string} humidity - The current humidity.
+ * @property {string} day - Today's day.
+ * @property {string} date - Today's date.
+ * @property {string} latitude - The latitude of the location.
+ * @property {string} longitude - The longitude of the location.
  */
