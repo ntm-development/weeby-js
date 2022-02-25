@@ -5,6 +5,8 @@
   "main": "src/index.js",
   "scripts": {
     "start": "node .",
+    "docs": "docgen -s src/*.ts src/**/*.ts -o docs/docs.json -c pages/index.yml -g -S 1 -j .jsconfig.json",
+    "docs:test": "docgen --source src --custom docs/index.yml",
     "types": "tsc",
     "test": "eslint --ignore-path .eslintignore .",
     "lint": "eslint --ext .js,.ts . src --fix"
