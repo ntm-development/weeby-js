@@ -26,7 +26,7 @@
   },
   "homepage": "https://js.weebyapi.xyz/",
   "devDependencies": {
-    "common-tags": "^1.8.0",
+    "common-tags": "^1.8.2",
     "dotenv": "^16.0.0",
     "eslint": "^8.9.0",
     "eslint-plugin-node": "^11.1.0",
