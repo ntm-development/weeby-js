@@ -47,19 +47,13 @@ declare class JSON {
       */
     textFormat({ type, text }?: TextFormatterOptions): Promise<string>;
     /**
-      * Fetches lyrics from the Genius API.
-      * @param {string} query - The lyrics to search. See https://weebyapi.xyz/api/docs#json for all the JSON endpoints.
-      * @returns {Promise<LyricsResponse>} The lyrics and its information.
-      */
-    lyrics(query: string): Promise<LyricsResponse>;
-    /**
       * Fetches Weeby API's current statistics.
       * @returns {Promise<object>} The statistics returned in a object.
       */
     stats(): Promise<object>;
 }
 declare namespace JSON {
-    export { LyricsResponse, MemeResponse, TextFormatterOptions, MemeCategory };
+    export { MemeResponse, TextFormatterOptions, MemeCategory };
 }
 /**
  * All available Meme Categories:
@@ -122,75 +116,4 @@ type TextFormatterOptions = {
      * - The text to format.
      */
     text: string;
-};
-/**
- * - The response object for lyrics.
- */
-type LyricsResponse = {
-    /**
-     * - The ID of the song.
-     */
-    id: number;
-    /**
-     * - The Genius Lyrics URL.
-     */
-    url: string;
-    /**
-     * - The track object.
-     */
-    track: {
-        name: string;
-        thumbnail: string;
-        media: string;
-    };
-    /**
-     * - The artist object.
-     */
-    artist: {
-        name: string;
-        thumbnail: string;
-        id: number;
-    };
-    /**
-     * - The album object.
-     */
-    album: {
-        name: string;
-        thumbnail: string;
-        id: number;
-    };
-    /**
-     * - The colors object.
-     */
-    colors: {
-        songArtPrimary: string;
-        songArtSecondary: string;
-        songArtText: string;
-    };
-    /**
-     * - The stats object.
-     */
-    stats: {
-        hot: boolean;
-        pageViews: number;
-        contributors: number;
-        transcribers: number;
-        accepted_annotations: number;
-    };
-    /**
-     * - The recording location of the song/album.
-     */
-    recordingLocation: any;
-    /**
-     * - The release date of the song.
-     */
-    releaseDate: string;
-    /**
-     * - The formatted version of the release date.
-     */
-    formattedReleaseDate: string;
-    /**
-     * - The lyrics of the song.
-     */
-    lyrics: string;
 };

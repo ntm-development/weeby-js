@@ -89,6 +89,18 @@ declare class Generators {
       */
     spotifyNp({ image, title, artist, album }: SpotifyOptions): Promise<any>;
     /**
+      * Prints up to four text on the Plankton Plan Meme.
+      * @param {PlanktonPlanOptions} options - The options that contain the required parameters.
+      * @returns {Promise<buffer>} The generated image in a buffer.
+      */
+    planktonPlan({ stepOne, stepTwo, stepThree, stepFour }: PlanktonPlanOptions): Promise<any>;
+    /**
+      * Prints up to four text on the Brain Meme.
+      * @param {BrainOptions} options - The options that contain the required parameters.
+      * @returns {Promise<buffer>} The generated image in a buffer.
+      */
+    brain({ textOne, textTwo, textThree, textFour }: BrainOptions): Promise<any>;
+    /**
       * Generates an Image, Text and Color on the This Is Spotify Meme. Please see https://weebyapi.xyz/api/docs#generators for the available generators.
       * @param {ThisIsSpotifyOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
@@ -315,6 +327,48 @@ type SpotifyOptions = {
      * - The album name to be displayed.
      */
     album: string;
+};
+/**
+ * The options for the plankton plan generator.
+ */
+ type PlanktonPlanOptions = {
+  /**
+   * - The first text to print.
+   */
+  stepOne: string;
+  /**
+   * - The second text to print.
+   */
+  stepTwo: string;
+  /**
+   * - The third text to print.
+   */
+  stepThree: string;
+  /**
+   * - The fourth text to print.
+   */
+  stepFour: string;
+};
+/**
+ * The options for the brain meme generator.
+ */
+ type BrainOptions = {
+  /**
+   * - The first text to print.
+   */
+  textOne: string;
+  /**
+   * - The second text to print.
+   */
+  textTwo: string;
+  /**
+   * - The third text to print.
+   */
+  textThree: string;
+  /**
+   * - The fourth text to print.
+   */
+  textFour: string;
 };
 /**
  * The options for the this is spotify generator.

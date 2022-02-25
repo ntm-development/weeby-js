@@ -45,7 +45,7 @@ const WeebyAPI = require('weeby-js');
 const weeby = new WeebyAPI('YOUR_TOKEN');
 
 const image = await weeby.generators.oneImage({ type: '3000years', image: 'https://i.imgur.com/qgKvcQv.png' });
-message.channel.send({files: [{ attachment: image }]}); // -> Image Buffer
+channel.send({files: [{ attachment: image }]}); // -> Image Buffer
 ```
 
 ## Support
@@ -54,7 +54,7 @@ If you have found an issue while using this wrapper or have any suggestions? Fee
 ## Thanks!
 Thanks for checking out `weeby-js`, a NPM module development and maintained by NTM Development.
 
-I am currently maintaining this during my spare time, so if you would like to support me, Feel free to do so by donating [here](https://buymeacoffee.com/ntmnathan) on Buy me a coffee.
+To support it's development, please donate to Nate on [Buy me a coffee](https://buymeacoffee.com/ntmnathan).
 
 Also, don't forget to star the repo! 😋
 
