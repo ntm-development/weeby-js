@@ -1,122 +1,127 @@
-const { get } = require("node-superfetch");
-const chalk = require("chalk");
-const { version } = require("../../package.json");
+const { get } = require('node-superfetch');
+const chalk = require('chalk');
+
+const { version } = require('../../package.json');
 
 /**
 * @class Utility
 */
 class Utility {
-    constructor(token, baseURL) {
-        /**
+	constructor(token, baseURL) {
+		/**
          * Your Weeby API Token.
          * @type {string}
          * @private
         */
-         this.token = token;
+		this.token = token;
 
-         /**
+		/**
           * The base URL.
           * @type {string}
           * @private
          */
-         this.baseURL = baseURL;
-    }
+		this.baseURL = baseURL;
+	}
 
-    /**
+	/**
      * Checks if a user has voted for a bot on Top.gg
      * @param {TopGGVoteCheckerOptions} options - The options you want to use.
      * @returns {Promise<TopGGVoteCheckerResponse>}
      */
-    async topGGVoteChecker({ botID, userID }) {
-        if (typeof botID !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Bot ID parameter is not a string.")}`);
-        if (!botID) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Bot ID parameter is missing. You will need to provide a valid Bot ID.")}`);
-        if (typeof userID !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The User ID parameter is not a string.")}`);
-        if (!userID) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("User ID parameter is missing. You will need to provide a valid User ID.")}`);
+	async topGGVoteChecker({ botID, userID }) {
+		if (typeof botID !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Bot ID parameter is not a string.')}`);
+		if (!botID) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Bot ID parameter is missing. You will need to provide a valid Bot ID.')}`);
+		if (typeof userID !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The User ID parameter is not a string.')}`);
+		if (!userID) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('User ID parameter is missing. You will need to provide a valid User ID.')}`);
 
-        try {
-            const { body } = await get(`${this.baseURL}/webhook/topgg/votecheck`)
-                .query({ botid: botID, userid: userID })
-                .set("Authorization", `Bearer ${this.token}`)
-                .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
+		try {
+			const { body } = await get(`${this.baseURL}/webhook/topgg/votecheck`)
+				.query({ botid: botID, userid: userID })
+				.set('Authorization', `Bearer ${this.token}`)
+				.set('User-Agent', `Weeby-JS by NTM Development » v${version}`);
 
-            return body;
-        } catch (e) {
-            throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow(`Could not find that User's vote information for Bot ID: ${botID}. Make sure the User ID and Bot ID is correct, or the user should vote first.`)}`);
-        }
-    }
+			return body;
+		}
+		catch (e) {
+			throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow(`Could not find that User's vote information for Bot ID: ${botID}. Make sure the User ID and Bot ID is correct, or the user should vote first.`)}`);
+		}
+	}
 
-    /**
+	/**
      * Converts the provided currency to a different currency.
      * @param {CurrencyConverterOptions} options - The options you want to use.
      * @returns {Promise<CurrencyConverterResponse>}
      */
-    async currencyConverter({ from, to, amount } = {}) {
-        if (typeof from !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The From parameter is not a string.")}`);
-        if (!from) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("From parameter is missing. You will need to provide a valid ISO 4217 code of the currency.")}`);
-        if (typeof to !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The To parameter is not a string.")}`);
-        if (!to) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("To parameter is missing. You will need to provide a valid ISO 4217 code of the currency.")}`);
-        if (typeof amount !== "number") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Amount parameter is not a number.")}`);
-        if (!amount) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Amount parameter is missing. You will need to provide a number.")}`);
+	async currencyConverter({ from, to, amount }) {
+		if (typeof from !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The From parameter is not a string.')}`);
+		if (!from) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('From parameter is missing. You will need to provide a valid ISO 4217 code of the currency.')}`);
+		if (typeof to !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The To parameter is not a string.')}`);
+		if (!to) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('To parameter is missing. You will need to provide a valid ISO 4217 code of the currency.')}`);
+		if (typeof amount !== 'number') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Amount parameter is not a number.')}`);
+		if (!amount) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Amount parameter is missing. You will need to provide a number.')}`);
 
-        try {
-            const { body } = await get(`${this.baseURL}/currencyconverter`)
-                .query({ from: from, to: to, amount: parseInt(amount) })
-                .set("Authorization", `Bearer ${this.token}`)
-                .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
+		try {
+			const { body } = await get(`${this.baseURL}/currencyconverter`)
+				.query({ from: from, to: to, amount: parseInt(amount) })
+				.set('Authorization', `Bearer ${this.token}`)
+				.set('User-Agent', `Weeby-JS by NTM Development » v${version}`);
 
-            return body;
-        } catch (e) {
-            throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow(`There seems to be an error while attempting to use this method.`)}`);
-        }
-    }
+			return body;
+		}
+		catch (e) {
+			throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('There seems to be an error while attempting to use this method.')}`);
+		}
+	}
 
-    /**
+	/**
      * Translate the provided text to another language.
      * @param {TranslatorOptions} options - The options you want to use.
      * @returns {Promise<TranslateResponse>}
      */
-    async translate({ from, to, text } = {}) {
-        if (typeof from !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The From parameter is not a string.")}`);
-        if (!from) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("From parameter is missing. A valid ISO language code is needed.")}`);
-        if (typeof to !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The To parameter is not a string.")}`);
-        if (!to) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("To parameter is missing. A valid ISO language code is needed.")}`);
-        if (typeof text !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Text parameter is not a string.")}`);
-        if (!text) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Text parameter is missing. You will need to provide some text.")}`);
+	async translate({ from, to, text } = {}) {
+		if (typeof from !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The From parameter is not a string.')}`);
+		if (!from) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('From parameter is missing. A valid ISO language code is needed.')}`);
+		if (typeof to !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The To parameter is not a string.')}`);
+		if (!to) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('To parameter is missing. A valid ISO language code is needed.')}`);
+		if (typeof text !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Text parameter is not a string.')}`);
+		if (!text) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Text parameter is missing. You will need to provide some text.')}`);
 
-        try {
-            const { body } = await get(`${this.baseURL}/translate`)
-                .query({ from: from, to: to, text: text })
-                .set("Authorization", `Bearer ${this.token}`)
-                .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
+		try {
+			const { body } = await get(`${this.baseURL}/translate`)
+				.query({ from: from, to: to, text: text })
+				.set('Authorization', `Bearer ${this.token}`)
+				.set('User-Agent', `Weeby-JS by NTM Development » v${version}`);
 
-            return body;
-        } catch (e) {
-            throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow(`There seems to be an error while attempting to use this method.`)}`);
-        }
-    }
+			return body;
+		}
+		catch (e) {
+			throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('There seems to be an error while attempting to use this method.')}`);
+		}
+	}
 
-    /**
+	/**
      * Returns the weather for the provided location.
      * @param {WeatherOptions} options - The options you want to use.
      * @returns {Promise<WeatherResponse>}
      */
-    async weather({ location, degreeType } = {}) {
-        if (typeof location !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Location parameter is not a string.")}`);
-        if (!location) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Location parameter is missing. Provide some text.")}`);
-        if (typeof degreeType !== "string") throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("The Degree Type parameter is not a string.")}`);
-        if (!degreeType) throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow("Degree Type parameter is missing. Provide either Celsius or Fahrenheit")}`);
+	async weather({ location, degreeType } = {}) {
+		if (typeof location !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Location parameter is not a string.')}`);
+		if (!location) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Location parameter is missing. Provide some text.')}`);
+		if (typeof degreeType !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Degree Type parameter is not a string.')}`);
+		if (!degreeType) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Degree Type parameter is missing. Provide either Celsius or Fahrenheit')}`);
 
-        try {
-            const { body } = await get(`${this.baseURL}/weather`)
-                .query({ location: location, degreetype: degreeType })
-                .set("Authorization", `Bearer ${this.token}`)
-                .set("User-Agent", `Weeby-JS by NTM Development » v${version}`);
+		try {
+			const { body } = await get(`${this.baseURL}/weather`)
+				.query({ location: location, degreetype: degreeType })
+				.set('Authorization', `Bearer ${this.token}`)
+				.set('User-Agent', `Weeby-JS by NTM Development » v${version}`);
 
-            return body;
-        } catch (e) {
-            throw new Error(`${chalk.magenta("Weeby-JS")} ${chalk.gray("»")} ${chalk.yellow(`There seems to be an error while attempting to use this method.`)}`);
-        }
-    }
+			return body;
+		}
+		catch (e) {
+			throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('There seems to be an error while attempting to use this method.')}`);
+		}
+	}
 }
 
 module.exports = Utility;
