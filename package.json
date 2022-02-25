@@ -26,6 +26,7 @@
   },
   "homepage": "https://js.weebyapi.xyz/",
   "devDependencies": {
+    "@discordjs/docgen": "^0.11.0",
     "common-tags": "^1.8.0",
     "dotenv": "^16.0.0",
     "eslint": "^8.9.0",
