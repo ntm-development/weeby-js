@@ -7,6 +7,5 @@ shrinkwrap.yaml
 .data
 .git
 .vscode
-package-lock.json
 cmds.md
 /markdown
