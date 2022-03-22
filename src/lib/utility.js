@@ -48,6 +48,30 @@ class Utility {
 	}
 
 	/**
+     * Checks if a user has voted for a server on Top.gg
+     * @param {TopGGServerVoteCheckerOptions} options - The options you want to use.
+     * @returns {Promise<TopGGServerVoteCheckerOptions>}
+     */
+	async topGGServerVoteChecker({ serverID, userID }) {
+		if (typeof serverID !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Server ID parameter is not a string.')}`);
+		if (!serverID) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Server ID parameter is missing. You will need to provide a valid Bot ID.')}`);
+		if (typeof userID !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The User ID parameter is not a string.')}`);
+		if (!userID) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('User ID parameter is missing. You will need to provide a valid User ID.')}`);
+
+		try {
+			const { body } = await get(`${this.baseURL}/webhook/topgg/server/votecheck`)
+				.query({ serverid: serverID, userid: userID })
+				.set('Authorization', `Bearer ${this.token}`)
+				.set('User-Agent', `Weeby-JS by NTM Development » v${version}`);
+
+			return body;
+		}
+		catch (e) {
+			throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow(`Could not find that User's vote information for Server ID: ${serverID}. Make sure the User ID and Server ID is correct, or the user should vote first.`)}`);
+		}
+	}
+
+	/**
      * Converts the provided currency to a different currency.
      * @param {CurrencyConverterOptions} options - The options you want to use.
      * @returns {Promise<CurrencyConverterResponse>}
@@ -133,9 +157,26 @@ module.exports = Utility;
  */
 
 /**
+ * @typedef {Object} TopGGServerVoteCheckerOptions - The options for the TopGGServerVoteChecker.
+ * @property {string} serverID - The ID of the server you want to check.
+ * @property {string} userID - The ID of the user you want to check.
+ */
+
+/**
  * @typedef {Object} TopGGVoteCheckerResponse - The response from the Top.gg Vote Checker method.
  * @property {string} userID - The ID of the user.
  * @property {string} botID - The ID of the bot.
+ * @property {number} dateVoted - The date the user voted (Unix Timestamp)
+ * @property {number} currentVoteExpiry - The current expiry of the vote (12 Hours - Unix Timestamp)
+ * @property {number} timesVoted - The amount of times the user has voted lifetime for the bot.
+ * @property {boolean} hasVoted - Whether the user has voted or not.
+ * @property {boolean} isWeekend - Whether the user voted on a weekend or not.
+ */
+
+/**
+ * @typedef {Object} TopGGServerVoteCheckerResponse - The response from the Top.gg Server Vote Checker method.
+ * @property {string} userID - The ID of the user.
+ * @property {string} serverID - The ID of the server.
  * @property {number} dateVoted - The date the user voted (Unix Timestamp)
  * @property {number} currentVoteExpiry - The current expiry of the vote (12 Hours - Unix Timestamp)
  * @property {number} timesVoted - The amount of times the user has voted lifetime for the bot.

@@ -27,6 +27,17 @@ declare class Utility {
      * @param {CurrencyConverterOptions} options - The options you want to use.
      * @returns {Promise<CurrencyConverterResponse>}
      */
+    /**
+     * Checks if a user has voted for a server on Top.gg
+     * @param {TopGGServerVoteCheckerOptions} options - The options you want to use.
+     * @returns {Promise<TopGGServerVoteCheckerResponse>}
+     */
+    topGGServerVoteChecker({ serverID, userID }: TopGGServerVoteCheckerOptions): Promise<TopGGServerVoteCheckerResponse>;
+    /**
+     * Converts the provided currency to a different currency.
+     * @param {CurrencyConverterOptions} options - The options you want to use.
+     * @returns {Promise<CurrencyConverterResponse>}
+     */
     currencyConverter({ from, to, amount }?: CurrencyConverterOptions): Promise<CurrencyConverterResponse>;
     /**
      * Translate the provided text to another language.
@@ -42,7 +53,7 @@ declare class Utility {
     weather({ location, degreeType }?: WeatherOptions): Promise<WeatherResponse>;
 }
 declare namespace Utility {
-    export { TopGGVoteCheckerOptions, TopGGVoteCheckerResponse, TranslateOptions, TranslateResponse, CurrencyConverterOptions, CurrencyConverterResponse, WeatherOptions, WeatherResponse };
+    export { TopGGVoteCheckerOptions, TopGGVoteCheckerResponse, TopGGServerVoteCheckerOptions, TopGGServerVoteCheckerResponse, TranslateOptions, TranslateResponse, CurrencyConverterOptions, CurrencyConverterResponse, WeatherOptions, WeatherResponse };
 }
 /**
  * - The options for the TopGGVoteChecker.
@@ -52,6 +63,19 @@ type TopGGVoteCheckerOptions = {
      * - The ID of the bot you want to check.
      */
     botID: string;
+    /**
+     * - The ID of the user you want to check.
+     */
+    userID: string;
+};
+/**
+ * - The options for the TopGGServerVoteChecker.
+ */
+ type TopGGServerVoteCheckerOptions = {
+    /**
+     * - The ID of the server you want to check.
+     */
+    serverID: string;
     /**
      * - The ID of the user you want to check.
      */
@@ -69,6 +93,39 @@ type TopGGVoteCheckerResponse = {
      * - The ID of the bot.
      */
     botID: string;
+    /**
+     * - The date the user voted (Unix Timestamp)
+     */
+    dateVoted: number;
+    /**
+     * - The current expiry of the vote (12 Hours - Unix Timestamp)
+     */
+    currentVoteExpiry: number;
+    /**
+     * - The amount of times the user has voted lifetime for the bot.
+     */
+    timesVoted: number;
+    /**
+     * - Whether the user has voted or not.
+     */
+    hasVoted: boolean;
+    /**
+     * - Whether the user voted on a weekend or not.
+     */
+    isWeekend: boolean;
+};
+/**
+ * - The response from the Top.gg Vote Checker method.
+ */
+ type TopGGServerVoteCheckerResponse = {
+    /**
+     * - The ID of the user.
+     */
+    userID: string;
+    /**
+     * - The ID of the server.
+     */
+    serverID: string;
     /**
      * - The date the user voted (Unix Timestamp)
      */
