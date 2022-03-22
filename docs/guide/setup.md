@@ -28,7 +28,7 @@ WEEBY_TOKEN=<your token>
 
 ```js
 const WeebyAPI = require('weeby-js');
-require('dotenv').config();)
+require('dotenv').config();
 
 const weeby = new WeebyAPI(process.env.WEEBY_TOKEN);
 ```
