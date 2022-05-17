@@ -34,13 +34,13 @@ declare class Custom {
       * @param {RankOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    rank({ avatar, username, bgColor, level, xp }?: RankOptions): Promise<any>;
+    rank({ avatar, username, bgColor, level, xp, progressBar, progressBarColor, status, font }?: RankOptions): Promise<any>;
     /**
       * Creates a customisable level up card.
       * @param {LevelUpOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-    levelUp({ avatar, bgColor, borderColor, oldlevel, newlevel, font }?: LevelUpOptions): Promise<any>;
+    levelUp({ avatar, bgColor, newlevel, status, font }?: LevelUpOptions): Promise<any>;
 }
 declare namespace Custom {
     export { GreetingOptions, BoosterOptions, RankOptions, LevelUpOptions };
@@ -118,6 +118,22 @@ type RankOptions = {
      * - How much XP the user has.
      */
     xp: number;
+    /**
+     * - The size of the progress bar. (0-100)
+     */
+    progressBar: number;
+    /**
+     * - The color of the progress bar.
+     */
+    progressBar?: string;
+    /**
+     * - The color of the progress bar.
+     */
+    status?: string;
+    /**
+     * - The font to use, 'nexa' by default.
+     */
+    font?: FontType;
 };
 /**
  * Options for creating a level up card.
@@ -132,17 +148,13 @@ type LevelUpOptions = {
      */
     bgColor: string;
     /**
-     * - The color of the avatar border. (Do not include the hashtag).
-     */
-    borderColor: string;
-    /**
-     * - The old level of the user.
-     */
-    oldlevel: number;
-    /**
      * - The new level of the user.
      */
     newlevel: number;
+    /**
+     * - The color of the progress bar.
+     */
+    status?: string;
     /**
      * - The font to use, 'nexa' by default.
      */

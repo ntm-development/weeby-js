@@ -8,7 +8,6 @@
  * * Riffic
  * * Minecraft
  * * Pinkycupid
- * * Paladins
  * * Pokemon
  * * Oldenglish
  * * Chalkduster
@@ -18,5 +17,6 @@
  * * Typewriter
  * * Spongebob
  * * Cornerofthesky
- * @typedef {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'paladins'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky'|'breesh')} FontType
+ * * Breesh
+ * @typedef {('gotham'|'stoneserif'|'roboto'|'arial'|'impact'|'riffic'|'minecraft'|'pinkycupid'|'pokemon'|'oldenglish'|'chalkduster'|'akbar'|'nexa'|'verdana'|'typewriter'|'spongebob'|'cornerofthesky'|'breesh')} FontType
  */
