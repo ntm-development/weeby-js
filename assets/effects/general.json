@@ -1,5 +1,4 @@
 [
-    "blur",
     "contrast",
     "edge",
     "greyscale",
@@ -11,5 +10,6 @@
     "threshold",
     "blurple",
     "invertedthreshold",
-    "invertedgreyscale"
+    "invertedgreyscale",
+    "oil"
 ]

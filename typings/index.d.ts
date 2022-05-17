@@ -24,10 +24,10 @@ declare class WeebyAPI {
     custom: Custom;
     utility: Utility;
 }
-import Generators = require("./src/lib/generators");
-import GIF = require("./src/lib/gif");
-import Overlays = require("./src/lib/overlays");
-import Effects = require("./src/lib/effects");
-import JSON = require("./src/lib/json");
-import Custom = require("./src/lib/custom");
-import Utility = require("./src/lib/utility");
+import Generators = require("./lib/generators");
+import GIF = require("./lib/gif");
+import Overlays = require("./lib/overlays");
+import Effects = require("./lib/effects");
+import JSON = require("./lib/json");
+import Custom = require("./lib/custom");
+import Utility = require("./lib/utility");

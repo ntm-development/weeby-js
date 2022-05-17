@@ -43,7 +43,7 @@ class Custom {
 		const circleColor = circleHex ? circleHex : '';
 		const nameColor = nameHex ? nameHex : '';
 		const messageColor = messageHex ? messageHex : '';
-		const fontParams = font ? font : '';
+		const fontParams = font ? font : 'gotham';
 
 		const { body } = await get(`${this.baseURL}/greeting`)
 			.set('Authorization', `Bearer ${this.token}`)
@@ -63,6 +63,7 @@ class Custom {
 		if (typeof name !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Name parameter is not a string.')}`);
 		if (typeof background !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Background parameter is not a string.')}`);
 		if (typeof title !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Title parameter is not a string.')}`);
+
 		if (!icon) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Icon parameter is missing. You will need to provide a valid image link.')}`);
 		if (!background) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Background parameter is missing. You will need to provide a valid image link.')}`);
 		if (!name) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Name parameter is missing. You will need to provide some text.')}`);
@@ -73,7 +74,7 @@ class Custom {
 		const circleColor = circleHex ? circleHex : '';
 		const nameColor = nameHex ? nameHex : '';
 		const messageColor = messageHex ? messageHex : '';
-		const fontParams = font ? font : '';
+		const fontParams = font ? font : 'nexa';
 
 		const { body } = await get(`${this.baseURL}/booster`)
 			.set('Authorization', `Bearer ${this.token}`)
@@ -88,22 +89,33 @@ class Custom {
       * @param {RankOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-	async rank({ avatar, username, bgColor, level, xp } = {}) {
+	async rank({ avatar, username, bgColor, level, xp, progressBar, progressBarColor = '16f988', status = '16f988', font = 'nexa' } = {}) {
 		if (typeof avatar !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Avatar parameter is not a string.')}`);
 		if (typeof username !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Username parameter is not a string.')}`);
 		if (typeof bgColor !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Background Color parameter is not a string.')}`);
 		if (typeof level !== 'number') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Level parameter is not a number.')}`);
 		if (typeof xp !== 'number') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The XP parameter is not a number.')}`);
+		if (typeof progressBar !== 'number') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Progress Bar parameter is not a number.')}`);
+		if (typeof progressBarColor !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Progress Bar Color parameter is not a hex.')}`);
+		if (typeof status !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Status parameter is not a hex.')}`);
+
 		if (!avatar) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Avatar parameter is missing. You will need to provide a valid image link.')}`);
+
 		if (!username) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Username parameter is missing. You will need to provide some text.')}`);
 		if (!bgColor) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Background Color parameter is missing. You will need to provide a valid Hex Color Code.')}`);
 		if (!level) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Level parameter is missing. You will need to provide a number.')}`);
 		if (!xp) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('XP parameter is missing. You will need to provide a number.')}`);
+		if (!progressBar) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Progress Bar parameter is missing. You will need to provide a number.')}`);
+		if (progressBar < 0) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Progress Bar parameter must not be lower than 0.')}`);
+		if (progressBar > 100) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Progress Bar parameter must not be higher than 100.')}`);
+
+
+		const fontParams = font ? font : 'nexa';
 
 		const { body } = await get(`${this.baseURL}/rank`)
 			.set('Authorization', `Bearer ${this.token}`)
 			.set('User-Agent', `Weeby-JS by NTM Development » v${version}`)
-			.query({ avatar: avatar, username: username, bgColor: bgColor, level: level, xp: xp });
+			.query({ avatar: avatar, username: username, bgColor: bgColor, level: level, xp: xp, progressBar: progressBar, progressBarColor: progressBarColor, status: status, font: fontParams });
 
 		return body;
 	}
@@ -113,24 +125,22 @@ class Custom {
       * @param {LevelUpOptions} options - The options that contain the required parameters.
       * @returns {Promise<buffer>} The generated image in a buffer.
       */
-	async levelUp({ avatar, bgColor, borderColor, oldlevel, newlevel, font } = {}) {
+	async levelUp({ avatar, bgColor, newlevel, status = '16f988', font = 'nexa' } = {}) {
 		if (typeof avatar !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Avatar parameter is not a string.')}`);
 		if (typeof bgColor !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Background Color parameter is not a string.')}`);
-		if (typeof borderColor !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Border Color parameter is not a string.')}`);
-		if (typeof oldlevel !== 'number') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Old Level parameter is not a number.')}`);
 		if (typeof newlevel !== 'number') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The New Level parameter is not a number.')}`);
+		if (typeof status !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Status parameter is not a hex.')}`);
+
 		if (!avatar) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Avatar parameter is missing. You will need to provide a valid image link.')}`);
 		if (!bgColor) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Background Color parameter is missing. You will need to provide a valid Hex Color Code.')}`);
-		if (!borderColor) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Border Color parameter is missing. You will need to provide a valid Hex Color Code.')}`);
-		if (!oldlevel) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Old Level parameter is missing. You will need to provide a number.')}`);
 		if (!newlevel) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('New Level parameter is missing. You will need to provide a number.')}`);
 
-		const fontParams = font ? font : '';
+		const fontParams = font ? font : 'nexa';
 
 		const { body } = await get(`${this.baseURL}/levelup`)
 			.set('Authorization', `Bearer ${this.token}`)
 			.set('User-Agent', `Weeby-JS by NTM Development » v${version}`)
-			.query({ avatar: avatar, bgColor: bgColor, borderColor: borderColor, oldlevel: oldlevel, newlevel: newlevel, font: fontParams });
+			.query({ avatar: avatar, bgColor: bgColor, newlevel: newlevel, status: status, font: fontParams });
 
 		return body;
 	}
@@ -176,6 +186,10 @@ module.exports = Custom;
  * @property {string} bgColor - The color of the background.
  * @property {number} level - The level the user is currently on.
  * @property {number} xp - How much XP the user has.
+ * @property {number} progressBar - The size of the progress bar. (0-100)
+ * @property {string} [progressBarColor='16f988'] - The color of the progress bar.
+ * @property {string} [status='43b581'] - The color of the user status.
+ * @property {string} [font=nexa] - The font to use, 'nexa' by default.
  */
 
 /**
@@ -183,8 +197,7 @@ module.exports = Custom;
  * @typedef {Object} LevelUpOptions
  * @property {string} avatar - The link to an image (.png, .jpg, .gif)
  * @property {string} bgColor - The color of the background. (Do not include the hashtag).
- * @property {string} borderColor - The color of the avatar border. (Do not include the hashtag).
- * @property {number} oldlevel - The old level of the user.
  * @property {number} newlevel - The new level of the user.
+ * @property {string} [status='16f988'] - The color of the user status. (Do not include the hashtag).
  * @property {FontType} [font=nexa] - The font to use, 'nexa' by default.
  */
