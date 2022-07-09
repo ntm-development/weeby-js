@@ -23,11 +23,6 @@ declare class Utility {
      */
     topGGVoteChecker({ botID, userID }: TopGGVoteCheckerOptions): Promise<TopGGVoteCheckerResponse>;
     /**
-     * Converts the provided currency to a different currency.
-     * @param {CurrencyConverterOptions} options - The options you want to use.
-     * @returns {Promise<CurrencyConverterResponse>}
-     */
-    /**
      * Checks if a user has voted for a server on Top.gg
      * @param {TopGGServerVoteCheckerOptions} options - The options you want to use.
      * @returns {Promise<TopGGServerVoteCheckerResponse>}
@@ -41,16 +36,23 @@ declare class Utility {
     currencyConverter({ from, to, amount }?: CurrencyConverterOptions): Promise<CurrencyConverterResponse>;
     /**
      * Translate the provided text to another language.
-     * @param {TranslatorOptions} options - The options you want to use.
+     * @param {TranslateOptions} options - The options you want to use.
      * @returns {Promise<TranslateResponse>}
      */
-    translate({ from, to, text }?: any): Promise<TranslateResponse>;
+    translate({ from, to, text }?: TranslateOptions): Promise<TranslateResponse>;
     /**
      * Returns the weather for the provided location.
      * @param {WeatherOptions} options - The options you want to use.
      * @returns {Promise<WeatherResponse>}
      */
     weather({ location, degreeType }?: WeatherOptions): Promise<WeatherResponse>;
+    /**
+     * Returns the weather for the provided location.
+     * @param {TimezoneOptions} options - The options you want to use.
+     * @returns {Promise<TimezoneResponse>}
+     */
+    timezone({ location, area, region }?: TimezoneOptions): Promise<TimezoneResponse>;
+
 }
 declare namespace Utility {
     export { TopGGVoteCheckerOptions, TopGGVoteCheckerResponse, TopGGServerVoteCheckerOptions, TopGGServerVoteCheckerResponse, TranslateOptions, TranslateResponse, CurrencyConverterOptions, CurrencyConverterResponse, WeatherOptions, WeatherResponse };
@@ -279,4 +281,59 @@ type TranslateOptions = {
      * - The text to translate.
      */
     text: number;
+};
+/**
+ * - The options for the Timezone method.
+ */
+ type TimezoneOptions = {
+    /**
+     * - A valid Area. Refer to this: https://timezonedb.com/
+     */
+    area: string;
+    /**
+     * - A valid location. Refer to this: https://timezonedb.com/time-zones
+     */
+    location: string;
+    /**
+     * - If the Area and Location has a region, you can input a valid region. Refer to this: https://timezonedb.com/time-zones
+     */
+    region?: string;
+};
+
+/**
+ * - The response of the Timezone method.
+ */
+ type TimezoneResponse = {
+    /**
+     * - The name of the timezone.
+     */
+    timezone: string;
+    /**
+     * - The unix time of the timezone.
+     */
+    unixTime: number;
+    /**
+     * - The UTC date and time of the timezone.
+     */
+    utcDateTime: string;
+    /**
+     * - The timezone's abbreviation.
+     */
+    abbreviation: string;
+    /**
+     * - The date and time of the timezone.
+     */
+    dateTime: string;
+    /**
+     * - The day of the week (in numeric format).
+     */
+    dayOfWeek: number;
+    /**
+     * - The day of the year (in numeric format).
+     */
+    dayOfYear: number;
+    /**
+     * - The week number (in numeric format).
+     */
+    weekNumber: number;
 };
