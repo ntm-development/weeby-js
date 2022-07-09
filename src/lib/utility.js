@@ -146,6 +146,31 @@ class Utility {
 			throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('There seems to be an error while attempting to use this method.')}`);
 		}
 	}
+
+	/**
+     * Returns the timezone of the provided area and location. For example: America/New_York
+     * @param {TimezoneOptions} options - The options you want to use.
+     * @returns {Promise<TimezoneResponse>}
+     */
+	async timezone({ area, location, region = '' } = {}) {
+		if (typeof location !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Location parameter is not a string.')}`);
+		if (!location) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Location parameter is missing. Provide some text.')}`);
+		if (typeof area !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Area parameter is not a string.')}`);
+		if (!area) throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('Area Type parameter is missing. Provide some text.')}`);
+		if (typeof region !== 'string') throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('The Region parameter is not a string.')}`);
+
+		try {
+			const { body } = await get(`${this.baseURL}/timezone`)
+				.query({ location: location, area: area, region: region ? region : '' })
+				.set('Authorization', `Bearer ${this.token}`)
+				.set('User-Agent', `Weeby-JS by NTM Development » v${version}`);
+
+			return body;
+		}
+		catch (e) {
+			throw new Error(`${chalk.magenta('Weeby-JS')} ${chalk.gray('»')} ${chalk.yellow('There seems to be an error while attempting to use this method.')}`);
+		}
+	}
 }
 
 module.exports = Utility;
@@ -239,4 +264,23 @@ module.exports = Utility;
  * @property {string} date - Today's date.
  * @property {string} latitude - The latitude of the location.
  * @property {string} longitude - The longitude of the location.
+ */
+
+/**
+ * @typedef {Object} TimezoneOptions - The options for the Timezone method.
+ * @param {string} area - A valid Area. Refer to this: https://timezonedb.com/time-zones
+ * @param {string} location - A valid location. Refer to this: https://timezonedb.com/time-zones
+ * @param {string} region - If the Area and Location has a region, you can input a valid region. Refer to this: https://timezonedb.com/time-zones
+ */
+
+/**
+ * @typedef {Object} TimezoneResponse - The response for the Weather method.
+ * @property {string} timezone - The name of the timezone.
+ * @property {number} unixTime - The unix time of the timezone.
+ * @property {string} utcDateTime - The UTC date and time of the timezone.
+ * @property {string} abbreviation - The timezone's abbreviation.
+ * @property {string} dateTime - The date and time of the timezone.
+ * @property {number} dayOfWeek - The day of the week (in numeric format).
+ * @property {string} dayOfYear - The day of the year (in numeric format).
+ * @property {string} weekNumber - The week number (in numeric format).
  */
