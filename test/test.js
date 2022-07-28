@@ -5,7 +5,7 @@ const WeebyAPI = require('../src/index');
 const weeby = new WeebyAPI(process.env.WEEBYAPI);
 
 (async () => {
-	const translatedResponse = await weeby.utility.translate({ from: 'en', to: 'fr', text: 'Hello World' });
+	const hugResponse = await weeby.gif.fetch('hug', true);
 
-	console.log(translatedResponse);
+	console.log(hugResponse);
 })();

@@ -19,6 +19,7 @@ declare class GIF {
     /**
       * Returns a random GIF image of the type provided.
       * @param {string} type - The Type of GIF. See https://weebyapi.xyz/api/docs#gif for all the GIFs.
+      * @param {string} noanime - EXPERIMENT - IT MAY GET REMOVED: If the GIF should not be anime.
       * @returns {Promise<string>} The Formatted GIF URL.
       */
     fetch(type: string): Promise<string>;
