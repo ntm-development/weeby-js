@@ -1,6 +1,6 @@
 {
   "name": "weeby-js",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "description": "JavaScript Wrapper for Weeby API",
   "main": "src/index.js",
   "scripts": {
