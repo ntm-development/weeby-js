@@ -1,3 +1,6 @@
+# ⚠️ Deprecated ⚠️
+This repository is no longer maintained and has been archived. It will not receive any further updates, including security patches. For those still using it, the website will remain online for an undetermined amount of time but it can go offline at anytime. It is recommended to switch to another library as soon as possible.
+
 <div align="center">
   <br />
   <p>
