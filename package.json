@@ -28,7 +28,7 @@
   "devDependencies": {
     "@discordjs/docgen": "^0.11.1",
     "common-tags": "^1.8.2",
-    "dotenv": "^16.0.1",
+    "dotenv": "^16.4.5",
     "eslint": "^8.20.0",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^6.0.0",
